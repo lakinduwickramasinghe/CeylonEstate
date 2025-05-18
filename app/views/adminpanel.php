@@ -59,6 +59,7 @@
                             </tr>
                         </thead>
                         <tbody>
+
                         <?php foreach ($listings as $listing) {
                             // Add "/month" only if ListingType is 'Renting'
                             $priceDisplay = "Rs. {$listing['Price']}";
