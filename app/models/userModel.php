@@ -89,6 +89,19 @@ class User{
             return false;
         }
     }
+        public function returnusercount()
+    {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) as count FROM mpuser");
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getAllUsers()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM mpuser");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
 

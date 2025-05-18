@@ -39,6 +39,13 @@
                     <label for="contact-number" class="block text-sm font-medium mb-1">Contact Number :</label>
                     <input type="tel" required name="contactnumber" id="contact-number" placeholder="0771812658" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
                 </div>
+                <div class="mb-4">
+                    <label for="UserRole" class="block text-sm font-medium text-gray-700">User Role:</label>
+                    <select type="text" id="UserRol" name="UserRole" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" required>
+                        <option value="Buyer">Buyer</option>
+                        <option value="Seller">Seller</option>
+                    </select>
+                </div>
                 <div class="mb-6 flex items-center">
                     <input type="checkbox" name="terms" id="terms" class="mr-2">
                     <label for="terms" class="text-sm">Agree to Terms and Conditions</label>

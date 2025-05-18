@@ -50,9 +50,10 @@ switch($page){
         require '../app/views/aboutus.php';
         break;
     case 'manage-listing':
-        require '../app/views/user_managelisting.php';
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $controller->managelisting();
         break;
-    default:
     case 'add-listing':
         require '../app/views/createlisting.php';
         break;
@@ -75,6 +76,32 @@ switch($page){
         require '../app/controllers/listingController.php';
         $controller = new listingController();
         $controller->viewforrentpage();
+        break;
+
+    case 'delete-listing':
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $controller->deleteListing();
+        break;
+    case 'edit-listing':
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $controller->loadeditlisting();
+        break;
+    case 'update-listing':
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $result = $controller->updatelisting();
+        break;
+    case 'adminpanel':
+        require '../app/controllers/adminpanelController.php';
+        $controller = new apController();
+        $controller->loadAdminPanel();
+        break;
+        
+    default:
+        // Handle 404 error or redirect to home
+        require '../app/views/404.php';
         break;
 
 }

@@ -31,7 +31,7 @@ class userController
         $email = $_POST['email'];
         $password = $_POST['password'];
         $phone = $_POST['contactnumber'];
-        $userRole = $_POST['user_role'] ?? 'user'; 
+        $userRole = $_POST['UserRole'] ?? 'user'; 
 
 
         if (empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($phone)) {
