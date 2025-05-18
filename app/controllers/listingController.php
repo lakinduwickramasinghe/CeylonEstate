@@ -16,6 +16,24 @@ class listingController
         require_once __DIR__ . '/../views/home.php';
     }
 
+    public function viewListing()
+    {
+        $Listing = new Listing();
+        $listingId = $_GET['id'] ?? null;
+        if ($listingId) {
+            $listing = $Listing->getListingById($listingId);
+            if ($listing) {
+                require_once __DIR__ . '/../views/viewlisting.php';
+            } else {
+                // Handle case where listing is not found
+                echo "Listing not found.";
+            }
+        } else {
+            // Handle case where listing ID is not provided
+            echo "No listing ID provided.";
+        }
+    }
+
     public function createListing()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {

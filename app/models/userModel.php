@@ -31,6 +31,7 @@ class User{
     public function createUser($firstName, $lastName, $email, $password, $contactNumber, $UserRole)
     {
 
+        $role = $UserRole ?? 'user';
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
         // Prepare the SQL statement
@@ -42,7 +43,7 @@ class User{
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashedPassword);
         $stmt->bindParam(':contact_number', $contactNumber);
-        $stmt->bindParam(':user_role', $$UserRole);
+        $stmt->bindParam(':user_role', $UserRole);
 
         // Execute the statement
         if ($stmt->execute()) {

@@ -62,8 +62,10 @@ switch($page){
         $result = $controller->createListing();
         break;
     case 'viewlisting':
-        $id = $_GET['id'] ?? null;
-        require '../app/views/viewlisting.php';
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $controller->viewListing();
+        
         break;
 
 }

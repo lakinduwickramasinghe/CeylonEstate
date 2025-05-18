@@ -11,7 +11,7 @@ class Listing{
         $this->conn = $database->connection();
     }
 
-    public function createListing($title, $description, $areaSize, $bedrooms, $bathrooms, $propertyType, $listingType, $status, $userId, $addressLine01, $addressLine02, $city, $zipCode, $price, $imagePath)
+    public function createListing($title, $description, $areaSize, $bedrooms, $bathrooms, $propertyType, $listingType, $status, $userId, $addressLine01, $addressLine02, $city, $zipCode, $price, $ImageInfo)
     {
         $stmt = $this->conn->prepare("INSERT INTO propertylisting (
             Title, Description, AreaSize, Bedrooms, Bathrooms,
@@ -20,7 +20,7 @@ class Listing{
         ) VALUES (
             :title, :description, :area_size, :bedrooms, :bathrooms,
             :property_type, :listing_type, :status, :user_id,
-            :address_line01, :address_line02, :city, :zip_code, :price, :image_path
+            :address_line01, :address_line02, :city, :zip_code, :price, :ImageInfo
         )");
 
         $stmt->bindParam(':title', $title);
@@ -37,7 +37,8 @@ class Listing{
         $stmt->bindParam(':city', $city);
         $stmt->bindParam(':zip_code', $zipCode);
         $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':image_path', $imagePath);
+        $stmt->bindParam(':ImageInfo', $ImageInfo);
+
 
         return $stmt->execute();
     }
@@ -67,6 +68,15 @@ class Listing{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getListingById($listingId)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM propertylisting WHERE ListingId = :listing_id");
+        $stmt->bindParam(':listing_id', $listingId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC); 
+    }
+
 
 
 
