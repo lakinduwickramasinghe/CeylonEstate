@@ -16,6 +16,8 @@ class apController{
         $user = new User();
         $userCount = $user->returnusercount();
 
+        $users = $user->getAllUsers();
+
         $listings = $listing->getAllListings();
         require_once __DIR__ . '/../views/adminpanel.php';
 

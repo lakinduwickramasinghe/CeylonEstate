@@ -94,39 +94,28 @@
                         <thead>
                             <tr class="border-b">
                                 <th class="py-2 px-4">User ID</th>
-                                <th class="py-2 px-4">Email</th>
+                                <th class="py-2 px-4">First Name</th>
+                                <th class="py-2 px-4">Last Name</th>
                                 <th class="py-2 px-4">Role</th>
                                 <th class="py-2 px-4">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-b">
-                                <td class="py-2 px-4">U001</td>
-                                <td class="py-2 px-4">user1@example.com</td>
-                                <td class="py-2 px-4">Seller</td>
-                                <td class="py-2 px-4">
-                                    <a href="#" class="text-blue-500 hover:underline mr-2">View</a>
-                                    <a href="#" class="text-red-500 hover:underline">Ban</a>
-                                </td>
-                            </tr>
-                            <tr class="border-b">
-                                <td class="py-2 px-4">U002</td>
-                                <td class="py-2 px-4">user2@example.com</td>
-                                <td class="py-2 px-4">Buyer</td>
-                                <td class="py-2 px-4">
-                                    <a href="#" class="text-blue-500 hover:underline mr-2">View</a>
-                                    <a href="#" class="text-red-500 hover:underline">Ban</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="py-2 px-4">U003</td>
-                                <td class="py-2 px-4">user3@example.com</td>
-                                <td class="py-2 px-4">Seller</td>
-                                <td class="py-2 px-4">
-                                    <a href="#" class="text-blue-500 hover:underline mr-2">View</a>
-                                    <a href="#" class="text-red-500 hover:underline">Ban</a>
-                                </td>
-                            </tr>
+                            <?php foreach ($users as $user){
+                                echo <<<HTML
+                                    <tr class="border-b">
+                                    <td class="py-2 px-4">{$user['UserId']}</td>
+                                    <td class="py-2 px-4">{$user['FirstName']}</td>
+                                    <td class="py-2 px-4">{$user['LastName']}</td>
+                                    <td class="py-2 px-4">{$user['Email']}</td>
+                                    <td class="py-2 px-4">
+                                        <a href="#" class="text-blue-500 hover:underline mr-2">View</a>
+                                        <a href="#" class="text-red-500 hover:underline">Ban</a>
+                                    </td>
+                                </tr>
+                                HTML;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
