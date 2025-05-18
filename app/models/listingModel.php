@@ -77,6 +77,20 @@ class Listing{
         return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
 
+    public function getAllForSaleListings()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM propertylisting WHERE ListingType = 'Selling'");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+        public function getAllForRentListings()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM propertylisting WHERE ListingType = 'Renting'");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 
 
 

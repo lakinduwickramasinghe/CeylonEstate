@@ -16,13 +16,13 @@
             <header class="bg-[#1A5C38] text-white py-4">
                 <div class="container mx-auto flex justify-between items-center px-4">
                     <div class="flex items-center space-x-2">
-                        <img src="logo.png" alt="Ceylon Estate Logo" class="h-8 w-8">
+                        <img src="/CeylonEstateFinal/public/images/logo.png" alt="Ceylon Estate Logo" class="h-8 w-8">
                         <span class="text-xl font-bold">CEYLON ESTATE</span>
                     </div>
                     <nav class="flex items-center space-x-6">
                         <a href="http://localhost/ceylonestatefinal/public/index.php?page=home" class="hover:underline">HOME</a>
-                        <a href="" class="hover:underline">SELL</a>
-                        <a href="#" class="hover:underline">RENT</a>
+                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=forsale" class="hover:underline">SELL</a>
+                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=forrent" class="hover:underline">RENT</a>
                         <a href="http://localhost/ceylonestatefinal/public/index.php?page=aboutus" class="hover:underline">ABOUT US</a>
                     </nav>
                     <div class="flex items-center space-x-4">
@@ -48,13 +48,13 @@
 <header class="bg-[#1A5C38] text-white py-4">
     <div class="container mx-auto flex justify-between items-center px-4">
         <div class="flex items-center space-x-2">
-            <img src="logo.png" alt="Ceylon Estate Logo" class="h-8 w-8">
+            <img src="/CeylonEstateFinal/public/images/logo.png" alt="Ceylon Estate Logo" class="h-8 w-8">
             <span class="text-xl font-bold">CEYLON ESTATE</span>
         </div>
         <nav class="flex items-center space-x-6">
             <a href="http://localhost/ceylonestatefinal/public/index.php?page=home" class="hover:underline">HOME</a>
-            <a href="" class="hover:underline">SELL</a>
-            <a href="#" class="hover:underline">RENT</a>
+            <a href="http://localhost/ceylonestatefinal/public/index.php?page=forsale" class="hover:underline">SELL</a>
+            <a href="http://localhost/ceylonestatefinal/public/index.php?page=forrent" class="hover:underline">RENT</a>
             <a href="http://localhost/ceylonestatefinal/public/index.php?page=aboutus" class="hover:underline">ABOUT US</a>
         </nav>
         <div class="flex items-center space-x-4">
@@ -229,15 +229,15 @@ HTML;
     <footer class="bg-black text-white py-4">
         <div class="container mx-auto flex justify-between items-center px-4">
             <div class="flex items-center space-x-2">
-                <img src="logo.png" alt="Ceylon Estate Logo" class="h-8 w-8">
+                <img src="/CeylonEstateFinal/public/images/logo.png" alt="Ceylon Estate Logo" class="h-8 w-8">
                 <span class="text-xl font-bold">CEYLON ESTATE</span>
             </div>
             <nav class="flex space-x-6">
-                <a href="#" class="hover:underline">Sell</a>
-                <a href="#" class="hover:underline">Rent</a>
-                <a href="#" class="hover:underline">About Us</a>
-                <a href="#" class="hover:underline">Post An Add</a>
-                <a href="#" class="hover:underline">My Profile</a>
+                <a href="http://localhost/ceylonestatefinal/public/index.php?page=forsale" class="hover:underline">Sell</a>
+                <a href="http://localhost/ceylonestatefinal/public/index.php?page=forrent" class="hover:underline">Rent</a>
+                <a href="http://localhost/ceylonestatefinal/public/index.php?page=aboutus" class="hover:underline">About Us</a>
+                <a href="http://localhost/ceylonestatefinal/public/index.php?page=adds-listing" class="hover:underline">Post An Add</a>
+                <a href="http://localhost/ceylonestatefinal/public/index.php?page=user-profile" class="hover:underline">My Profile</a>
             </nav>
             <p class="text-sm">Copyright © Ceylon Estate. All Right Reserved.</p>
         </div>

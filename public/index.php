@@ -65,7 +65,16 @@ switch($page){
         require '../app/controllers/listingController.php';
         $controller = new listingController();
         $controller->viewListing();
-        
+        break;
+    case 'forsale':
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $controller->viewforsalepage();
+        break;
+    case 'forrent':
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $controller->viewforrentpage();
         break;
 
 }

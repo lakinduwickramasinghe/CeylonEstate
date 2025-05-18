@@ -16,6 +16,25 @@ class listingController
         require_once __DIR__ . '/../views/home.php';
     }
 
+    public function viewforsalepage()
+    {
+        $Listing = new Listing();
+        $forsale = $Listing->getAllForSaleListings();
+        require_once __DIR__ . '/../views/forsale.php';
+    }
+
+        public function viewforrentpage()
+    {
+        $Listing = new Listing();
+        $forsale = $Listing->getAllForRentListings();
+        require_once __DIR__ . '/../views/forrent.php';
+    }
+    public function managelisting(){
+        $Listing = new Listing();
+        $userId = $_SESSION['user_id'] ?? null;
+        require_once __DIR__ . '/../views/user_managelisting.php';
+    }
+    
     public function viewListing()
     {
         $Listing = new Listing();
