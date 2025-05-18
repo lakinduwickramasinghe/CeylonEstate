@@ -36,6 +36,7 @@ class loginController{
                     $_SESSION['user_email'] = $user['Email'];
                     header("Location: http://localhost/ceylonestatefinal/public/index.php?page=home");
                     
+                    
                     return true;
                 } else {
                     echo "Invalid password.";
