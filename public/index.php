@@ -98,6 +98,23 @@ switch($page){
         $controller = new apController();
         $controller->loadAdminPanel();
         break;
+    case 'test':
+        require '../app/views/test.php';
+        break;
+    case 'addreview':
+        if(isset($_SESSION['user_id'])) {
+            require '../app/views/addreview.php';
+            break;
+        }
+        else {
+            require '../app/views/login.php';
+            break;
+        }
+    case 'savereview':
+        require '../app/controllers/reviewController.php';
+        $controller = new reviewController();
+        $controller->addReview();
+        break;
         
     default:
         // Handle 404 error or redirect to home

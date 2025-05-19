@@ -1,25 +1,19 @@
 <?php
-class Database
-{
-    private $host     = 'localhost';
-    private $username = 'root';
-    private $password = '';
-    private $db_name  = 'ceylonestate';
+class Database {
+    private $host = "localhost";
+    private $db_name = "ceylonestate";
+    private $username = "root";
+    private $password = "";
     public $conn;
 
-    public function connection()
-    {
+    public function connection() {
         $this->conn = null;
-
         try {
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
+        } catch(PDOException $exception) {
+            echo "Connection error: " . $exception->getMessage();
         }
-
         return $this->conn;
     }
-
 }

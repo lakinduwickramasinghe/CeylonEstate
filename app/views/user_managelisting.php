@@ -34,30 +34,35 @@
                 </div>
                 <div class="space-y-4">
                     <?php
-                    if (empty($listings)) {
-                        echo '<p class="text-gray-600">You have not created any listings yet.</p>';
-                    } else {
-                        foreach ($listings as $listing) {
-                            echo '
-                            <div class="bg-gray-100 p-4 rounded-lg shadow-sm flex justify-between items-center">
-                                <div>
-                                    <h3 class="text-lg font-medium text-gray-800">' . htmlspecialchars($listing['Title']) . '</h3>
-                                    <p class="text-sm text-gray-600">Type: ' . htmlspecialchars($listing['PropertyType']) . '</p>
-                                    <p class="text-sm text-gray-600">Price: LKR ' . number_format($listing['Price']) . '</p>
-                                    <p class="text-sm text-gray-600">Status: ' . htmlspecialchars($listing['Status']) . '</p>
-                                    <p class="text-sm text-gray-600">Status: ' . htmlspecialchars($listing['ListingType']) . '</p>
-                                </div>
-                                <div class="space-x-2">
-                                    <a href="http://localhost/ceylonestatefinal/public/index.php?page=edit-listing&id=' . $listing['ListingId'] . '" class="bg-[#1A5C38] text-white px-3 py-1 rounded hover:bg-[#154c2f] transition-all duration-300">Edit</a>
-                                    <form method="POST" action="http://localhost/ceylonestatefinal/public/index.php?page=delete-listing&id=' . $listing['ListingId'] . '" style="display:inline;">
-                                        <input type="hidden" name="listing_id" value="' . $listing['ListingId'] . '">
-                                        <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</button>
-                                    </form>
-                                </div>
-                            </div>';
+                        if (empty($listings)) {
+                            echo '<p class="text-gray-600">You have not created any listings yet.</p>';
+                        } else {
+                            foreach ($listings as $listing) {
+                                $imageData = base64_encode($listing['ImageInfo']);
+                                $imageSrc = 'data:image/jpeg;base64,' . $imageData;
+                                echo '
+                                <div class="bg-gray-100 p-4 rounded-lg shadow-sm flex justify-between items-center gap-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="' . $imageSrc . '" alt="' . htmlspecialchars($listing['Title']) . '" class="w-24 h-24 object-cover rounded-lg shadow-md">
+                                        <div>
+                                            <h3 class="text-lg font-medium text-gray-800">' . htmlspecialchars($listing['Title']) . '</h3>
+                                            <p class="text-sm text-gray-600">Type: ' . htmlspecialchars($listing['PropertyType']) . '</p>
+                                            <p class="text-sm text-gray-600">Price: LKR ' . number_format($listing['Price']) . '</p>
+                                            <p class="text-sm text-gray-600">Status: ' . htmlspecialchars($listing['Status']) . '</p>
+                                            <p class="text-sm text-gray-600">Status: ' . htmlspecialchars($listing['ListingType']) . '</p>
+                                        </div>
+                                    </div>
+                                    <div class="space-x-2">
+                                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=edit-listing&id=' . $listing['ListingId'] . '" class="bg-[#1A5C38] text-white px-3 py-1 rounded hover:bg-[#154c2f] transition-all duration-300">Edit</a>
+                                        <form method="POST" action="http://localhost/ceylonestatefinal/public/index.php?page=delete-listing&id=' . $listing['ListingId'] . '" style="display:inline;">
+                                            <input type="hidden" name="listing_id" value="' . $listing['ListingId'] . '">
+                                            <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>';
+                            }
                         }
-                    }
-                    ?>
+                        ?>
                 </div>
             </div>
         </div>

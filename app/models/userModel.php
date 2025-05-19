@@ -53,6 +53,7 @@ class User{
         }
     }
 
+
     public function getUserProfile($userId)
     {
         // Prepare the SQL statement

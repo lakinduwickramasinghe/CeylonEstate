@@ -7,7 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .bg-image {
-            background-image: url('https://via.placeholder.com/1200x400?text=Property+Image');
+            background-image: url('/CeylonEstateFinal/public/images/bg01.jpg');
+            background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
         }
@@ -49,6 +50,14 @@
             </div>
         </section>
     </main>
+
+    <!-- Customer Reviews Section -->
+     <?php
+        require_once __DIR__ . '/../controllers/reviewController.php';
+        $reviewController = new ReviewController();
+        $reviewController->loadReviewPage();
+        ?>
+    
 
     <!-- Footer -->
     <?php require_once __DIR__ . '/../views/includes/footer.php'; ?>
