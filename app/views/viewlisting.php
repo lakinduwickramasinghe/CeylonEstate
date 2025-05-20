@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +29,16 @@
 
             <!-- Property Details Card -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
+                <!-- Go Back Button -->
+                <div class="mb-6">
+                    <button onclick="history.back()" class="flex items-center bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                        Go Back
+                    </button>
+                </div>
+
                 <h1 class="text-3xl font-bold text-gray-800 mb-6"><?php echo htmlspecialchars($listing['Title']); ?></h1>
                 <div class="border-t border-gray-200 mb-6"></div>
                 <div class="mb-6">

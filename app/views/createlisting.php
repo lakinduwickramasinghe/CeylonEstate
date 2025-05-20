@@ -68,8 +68,8 @@
                             <div>
                                 <label for="listingType" class="block text-sm font-medium text-gray-700">Listing Type:</label>
                                 <select id="listingType" name="listingType" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" required>
-                                    <option value="selling">Selling</option>
-                                    <option value="renting">Renting</option>
+                                    <option value="Selling">Selling</option>
+                                    <option value="Renting">Renting</option>
                                 </select>
                             </div>
                             <div>

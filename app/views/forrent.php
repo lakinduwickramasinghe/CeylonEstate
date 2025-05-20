@@ -49,6 +49,7 @@
             foreach($forsale as $listing) {
                 $imageData = base64_encode($listing['ImageInfo']);
                 $imageSrc = 'data:image/jpeg;base64,' . $imageData;
+                $price = number_format($listing['Price'],0);
                 echo <<<HTML
                 <a href="http://localhost/ceylonestatefinal/public/index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
                     <div class="bg-white rounded-xl shadow-lg overflow-hidden h-80 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
@@ -59,7 +60,7 @@
                         </div>
                         <div class="p-4">
                             <h4 class="text-lg font-semibold text-gray-800 mb-2 line-clamp-1">{$listing['Title']}</h4>
-                            <p class="text-xl font-bold text-red-600 mb-2">Rs.{$listing['Price']} /Month</p>
+                            <p class="text-xl font-bold text-red-600 mb-2">Rs.{$price} /Month</p>
                             <p class="text-gray-700 text-base line-clamp-1">{$listing['AddressLine01']}</p>
                             <div class="flex flex-wrap gap-3 mt-3 text-sm text-gray-600">
                                 <span class="flex items-center">
@@ -87,21 +88,6 @@
                 HTML;
             }
             ?>
-
-                <!-- <div class="bg-white rounded-lg shadow-lg overflow-hidden h-72">
-                    <img src="/public/images/image01.jpg" alt="Property 1" class="w-full h-32 object-cover">
-                    <div class="p-2">
-                        <p class="text-lg font-bold text-red-600">Rs.200,000,000</p>
-                        <p class="text-gray-600 text-sm">No 91 Old Town Street Kandy</p>
-                        <div class="flex space-x-2 mt-1 text-xs text-gray-500">
-                            <span>3 Bedroom</span>
-                            <span>3 Bathroom</span>
-                            <span>360m House Size</span>
-                        </div>
-                    </div>
-                </div> -->
-
-
 
             </div>
         </div>
