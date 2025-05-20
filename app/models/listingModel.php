@@ -11,6 +11,50 @@ class Listing{
         $this->conn = $database->connection();
     }
 
+    public function searchforsalelisting($type, $minprice, $maxprice, $keyword) {
+        $query = "
+            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price 
+            FROM propertylisting 
+            WHERE ListingType = 'Selling'
+        ";
+
+        $conditions = [];
+        $params = [];
+
+        if (!empty($type)) {
+            $conditions[] = "PropertyType = :type";
+            $params[':type'] = $type;
+        }
+
+        if (!empty($minprice)) {
+            $conditions[] = "Price >= :minprice";
+            $params[':minprice'] = $minprice;
+        }
+
+        if (!empty($maxprice)) {
+            $conditions[] = "Price <= :maxprice";
+            $params[':maxprice'] = $maxprice;
+        }
+
+        if (!empty($keyword)) {
+            $conditions[] = "(Title LIKE :keyword OR AddressLine01 LIKE :keyword OR City LIKE :keyword)";
+            $params[':keyword'] = '%' . $keyword . '%';
+        }
+
+        // Combine conditions into the main query
+        if (count($conditions) > 0) {
+            $query .= " AND " . implode(' AND ', $conditions);
+        }
+
+        $query .= " ORDER BY RAND()";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+
     public function createListing($title, $description, $areaSize, $bedrooms, $bathrooms, $propertyType, $listingType, $status, $userId, $addressLine01, $addressLine02, $city, $zipCode, $price, $ImageInfo)
     {
         $stmt = $this->conn->prepare("INSERT INTO propertylisting (

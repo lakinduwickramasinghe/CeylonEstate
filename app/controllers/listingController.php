@@ -3,8 +3,6 @@ require_once __DIR__ . '/../models/listingModel.php';
 
 class listingController
 {
-    private $conn;
-
     public function __construct()
     {
     }
@@ -126,6 +124,17 @@ class listingController
         }
     }
 
+    public function sellsearch(){
+        $type = $_GET['property-type'];
+        $minprice = $_GET['min-price'];
+        $maxprice = $_GET['max-price'];
+        $keyword = $_GET['keyword'];
+
+        $listingModel = new Listing();
+        $searchResult = $listingModel->searchforsalelisting($type,$minprice,$maxprice,$keyword);
+        require_once __DIR__ . '/../views/sellsearch.php';
+    }
+
     public function createListing()
     {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -173,6 +182,9 @@ class listingController
             exit();
         }
     }
+
+    
+    
 }
 }
 

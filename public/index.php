@@ -115,6 +115,11 @@ switch($page){
         $controller = new reviewController();
         $controller->addReview();
         break;
+    case 'search-sell':
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $result = $controller->sellsearch();
+        break;
         
     default:
         // Handle 404 error or redirect to home
