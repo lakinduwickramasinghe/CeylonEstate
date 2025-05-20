@@ -14,29 +14,32 @@
 
     <!-- Hero Section -->
     <section class="py-16 text-center relative">
-        
         <div class="container mx-auto px-4 relative z-10">
-            
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Search Properties for Rent</h2>
             <div class="bg-white text-black p-4 rounded-lg shadow-lg max-w-4xl mx-auto flex space-x-4">
-                <select class="p-2 bg-gray-200 rounded focus:outline-none">
-                     <option value="" disabled selected>Select Property Type</option>
-                        <option value="Apartment">APARTMENT</option>
-                        <option value="Villa">VILLA</option>
-                        <option value="Land">LAND</option>
-                        <option value="Commercial">COMMERCIAL</option>
-                        <option value="Office Space">OFFICE SPACE</option>
-                        <option value="Shop">SHOP</option>
-                        <option value="Other">OTHER</option>
-                </select>
-                <select class="p-2 bg-gray-200 rounded focus:outline-none">
-                    <option>PRICE RANGE</option>
-                </select>
-                <input type="text" placeholder="Type any keyword to get started" class="p-2 bg-gray-200 rounded flex-grow focus:outline-none">
-                <button class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Search</button>
+                <div class="flex flex-col">
+                <form action="http://localhost/ceylonestatefinal/public/index.php" method="GET">
+                        <input type="hidden" name="page" value="search-rent">
+                        <select id="property-type" name="property-type" class="p-2 bg-gray-200 rounded focus:outline-none">
+                            <option value="" disabled selected>Select Property Type</option>
+                            <option value="House">HOUSE</option>
+                            <option value="Apartment">APARTMENT</option>
+                            <option value="Villa">VILLA</option>
+                            <option value="Land">LAND</option>
+                            <option value="Commercial">COMMERCIAL</option>
+                            <option value="Office Space">OFFICE SPACE</option>
+                            <option value="Shop">SHOP</option>
+                            <option value="Other">OTHER</option>
+                        </select>
+                    </div>
+                    <input type="number" name="min-price" placeholder="Min Price (LKR)" class="p-2 bg-gray-200 rounded focus:outline-none w-32">
+                    <input type="number" name="max-price" placeholder="Max Price (LKR)" class="p-2 bg-gray-200 rounded focus:outline-none w-32">
+                    <input type="text" name="keyword" placeholder="Type any keyword to get started" class="p-2 bg-gray-200 rounded flex-grow focus:outline-none">
+                    <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Search</button>
+                </form>
             </div>
         </div>
     </section>
-
     <!-- Properties For Sale Section -->
     <section class="py-16">
         <div class="container mx-auto px-4 max-w-6xl">

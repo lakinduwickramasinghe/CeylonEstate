@@ -4,7 +4,7 @@
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ceylon Estate For sale</title>
+    <title>Ceylon Estate Homepage</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
@@ -12,14 +12,13 @@
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Hero Section -->
     <section class="py-16 text-center relative">
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Search Properties for Sale</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Search Properties for Rent</h2>
             <div class="bg-white text-black p-4 rounded-lg shadow-lg max-w-4xl mx-auto flex space-x-4">
                 <div class="flex flex-col">
                 <form action="http://localhost/ceylonestatefinal/public/index.php" method="GET">
-                        <input type="hidden" name="page" value="search-sell">
+                        <input type="hidden" name="page" value="search-rent">
                         <select id="property-type" name="property-type" class="p-2 bg-gray-200 rounded focus:outline-none">
                             <option value="" disabled selected>Select Property Type</option>
                             <option value="House">HOUSE</option>
@@ -41,13 +40,28 @@
         </div>
     </section>
 
+        <div class="container mx-auto px-4 max-w-6xl mb-4 text-right">
+        <a href="http://localhost/ceylonestatefinal/public/index.php?page=forrent">
+            <button type="reset" form="search-sell-form" class="text-sm text-gray-500 underline hover:text-gray-700">Reset Search</button>
+        </a>
+    </div>
+
+
     <!-- Properties For Sale Section -->
     <section class="py-16">
         <div class="container mx-auto px-4 max-w-6xl">
+                <div class="mb-6">
+                <p class="text-lg font-semibold text-gray-800">
+                    <?php 
+                    $resultCount = count($searchResult);
+                    echo $resultCount . ' Search Result' . ($resultCount !== 1 ? 's' : '') . ' Found';
+                    ?>
+                </p>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <?php 
-                foreach($forsale as $listing) {
+                    foreach($searchResult as $listing) {
                     $imageData = base64_encode($listing['ImageInfo']);
                     $imageSrc = 'data:image/jpeg;base64,' . $imageData;
                     echo <<<HTML
@@ -88,21 +102,7 @@
                     HTML;
                 }
                 ?>
-
-                <!-- <div class="bg-white rounded-lg shadow-lg overflow-hidden h-72">
-                    <img src="/public/images/image01.jpg" alt="Property 1" class="w-full h-32 object-cover">
-                    <div class="p-2">
-                        <p class="text-lg font-bold text-red-600">Rs.200,000,000</p>
-                        <p class="text-gray-600 text-sm">No 91 Old Town Street Kandy</p>
-                        <div class="flex space-x-2 mt-1 text-xs text-gray-500">
-                            <span>3 Bedroom</span>
-                            <span>3 Bathroom</span>
-                            <span>360m House Size</span>
-                        </div>
-                    </div>
-                </div> -->
-
-
+                    
 
             </div>
         </div>

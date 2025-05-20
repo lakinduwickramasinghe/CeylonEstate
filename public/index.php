@@ -120,6 +120,11 @@ switch($page){
         $controller = new listingController();
         $result = $controller->sellsearch();
         break;
+    case 'search-rent':
+        require '../app/controllers/listingController.php';
+        $controller = new listingController();
+        $result = $controller->rentsearch();
+        break;
         
     default:
         // Handle 404 error or redirect to home

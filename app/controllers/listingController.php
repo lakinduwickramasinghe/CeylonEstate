@@ -125,7 +125,7 @@ class listingController
     }
 
     public function sellsearch(){
-        $type = $_GET['property-type'];
+        $type = $_GET['property-type'] ?? null;
         $minprice = $_GET['min-price'];
         $maxprice = $_GET['max-price'];
         $keyword = $_GET['keyword'];
@@ -133,6 +133,17 @@ class listingController
         $listingModel = new Listing();
         $searchResult = $listingModel->searchforsalelisting($type,$minprice,$maxprice,$keyword);
         require_once __DIR__ . '/../views/sellsearch.php';
+    }
+
+        public function rentsearch(){
+        $type = $_GET['property-type'] ?? null;
+        $minprice = $_GET['min-price'];
+        $maxprice = $_GET['max-price'];
+        $keyword = $_GET['keyword'];
+
+        $listingModel = new Listing();
+        $searchResult = $listingModel->searchforrentlisting($type,$minprice,$maxprice,$keyword);
+        require_once __DIR__ . '/../views/rentsearch.php';
     }
 
     public function createListing()

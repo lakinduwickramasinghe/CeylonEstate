@@ -11,6 +11,48 @@ class Listing{
         $this->conn = $database->connection();
     }
 
+    public function searchforrentlisting($type, $minprice, $maxprice, $keyword) {
+        $query = "
+            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price 
+            FROM propertylisting 
+            WHERE ListingType = 'Renting'
+        ";
+
+        $conditions = [];
+        $params = [];
+
+        if (!empty($type)) {
+            $conditions[] = "PropertyType = :type";
+            $params[':type'] = $type;
+        }
+
+        if (!empty($minprice)) {
+            $conditions[] = "Price >= :minprice";
+            $params[':minprice'] = $minprice;
+        }
+
+        if (!empty($maxprice)) {
+            $conditions[] = "Price <= :maxprice";
+            $params[':maxprice'] = $maxprice;
+        }
+
+        if (!empty($keyword)) {
+            $conditions[] = "(Title LIKE :keyword OR AddressLine01 LIKE :keyword OR City LIKE :keyword)";
+            $params[':keyword'] = '%' . $keyword . '%';
+        }
+
+        if (count($conditions) > 0) {
+            $query .= " AND " . implode(' AND ', $conditions);
+        }
+
+        $query .= " ORDER BY RAND()";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function searchforsalelisting($type, $minprice, $maxprice, $keyword) {
         $query = "
             SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price 
