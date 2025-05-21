@@ -1,15 +1,16 @@
-<main class="flex-1 p-8">
+       <!-- Main Dashboard Content -->
+        <main class="flex-1 p-8">
             <h1 class="text-3xl font-bold text-[#1A5C38] mb-8">Admin Dashboard</h1>
 
             <!-- Quick Stats -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-lg font-semibold text-gray-700">Total Listings</h3>
-                    <p class="text-2xl font-bold text-[#1A5C38] mt-2"></p>
+                    <p class="text-2xl font-bold text-[#1A5C38] mt-2"><?php echo $listingCount['count']?></p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-lg font-semibold text-gray-700">Total Users</h3>
-                    <p class="text-2xl font-bold text-[#1A5C38] mt-2"></p>
+                    <p class="text-2xl font-bold text-[#1A5C38] mt-2"><?php echo $userCount['count']?></p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-lg font-semibold text-gray-700">Pending Approvals</h3>

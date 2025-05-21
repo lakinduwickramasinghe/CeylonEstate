@@ -13,6 +13,11 @@ switch($page){
         require '../app/controllers/listingController.php';
         $controller = new listingController();
         $controller->loadHomePage();
+
+        require '../app/controllers/logincontroller.php';
+        $loginController = new loginController();
+        $loginController->checkSessionTimeout();
+        
         break;
     case 'login-controller':
         require '../app/controllers/loginController.php';

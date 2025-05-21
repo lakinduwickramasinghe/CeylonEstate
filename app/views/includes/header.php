@@ -34,7 +34,7 @@
                             <button class="bg-white text-[#1A5C38] px-3 py-1 rounded hover:bg-gray-200 text-sm">Logout</button>
                         </form>
 
-                        <form action="http://localhost/ceylonestatefinal/public/index.php?page=adminpanel" method="POST">
+                        <form action="http://localhost/ceylonestatefinal/public/index.php?page=adminpanel&view=dashboard" method="POST">
                             <button class="bg-white text-[#1A5C38] px-3 py-1 rounded hover:bg-gray-200 text-sm">Admin Panel</button>
                         </form>
                     </div>

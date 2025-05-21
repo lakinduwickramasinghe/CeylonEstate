@@ -1,15 +1,15 @@
-<main class="flex-1 p-8">
+        <main class="flex-1 p-8">
             <h1 class="text-3xl font-bold text-[#1A5C38] mb-8">Admin Dashboard</h1>
 
             <!-- Quick Stats -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-lg font-semibold text-gray-700">Total Listings</h3>
-                    <p class="text-2xl font-bold text-[#1A5C38] mt-2"></p>
+                    <p class="text-2xl font-bold text-[#1A5C38] mt-2"><?php echo $listingCount['count']?></p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-lg font-semibold text-gray-700">Total Users</h3>
-                    <p class="text-2xl font-bold text-[#1A5C38] mt-2"></p>
+                    <p class="text-2xl font-bold text-[#1A5C38] mt-2"><?php echo $userCount['count']?></p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-lg font-semibold text-gray-700">Pending Approvals</h3>
@@ -33,27 +33,7 @@
                         </thead>
                         <tbody>
 
-                        <?php foreach ($listings as $listing) {
-                            // Add "/month" only if ListingType is 'Renting'
-                            $priceDisplay = "Rs. {$listing['Price']}";
-                            if (strtolower($listing['ListingType']) === 'renting') {
-                                $priceDisplay .= "/month";
-                            }
-
-                            echo <<<HTML
-                                <tr class="border-b">
-                                    <td class="py-2 px-4">{$listing['ListingId']}</td>
-                                    <td class="py-2 px-4">{$listing['Title']}</td>
-                                    <td class="py-2 px-4 text-red-600">{$priceDisplay}</td>
-                                    <td class="py-2 px-4">{$listing['Status']}</td>
-                                    <td class="py-2 px-4">
-                                        <a href="#" class="text-blue-500 hover:underline mr-2">Edit</a>
-                                        <a href="#" class="text-red-500 hover:underline">Delete</a>
-                                    </td>
-                                </tr>
-                            HTML;
-                        }
-                        ?>
+                        <!-- Code block 01 -->
 
                         </tbody>
                     </table>
@@ -75,24 +55,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($users as $user){
-                                echo <<<HTML
-                                    <tr class="border-b">
-                                    <td class="py-2 px-4">{$user['UserId']}</td>
-                                    <td class="py-2 px-4">{$user['FirstName']}</td>
-                                    <td class="py-2 px-4">{$user['LastName']}</td>
-                                    <td class="py-2 px-4">{$user['Email']}</td>
-                                    <td class="py-2 px-4">
-                                        <a href="#" class="text-blue-500 hover:underline mr-2">View</a>
-                                        <a href="#" class="text-red-500 hover:underline">Ban</a>
-                                    </td>
-                                </tr>
-                                HTML;
-                            }
-                            ?>
+                            <!-- code block 02 -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </main>
-    </div>

@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . '/../models/listingModel.php';
 require_once __DIR__ . '/../models/userModel.php';
+require_once __DIR__ . '/../controllers/userController.php';
 
 class apController{
 
@@ -10,6 +11,12 @@ class apController{
 
     public function loadAdminPanel()
     {
+        $userController = new userController();
+        $result = $userController->isLoggedin();
+        if($result =='false') {
+            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=login");
+            exit();
+        }
         $listing = new Listing();
         $listingCount = $listing->returnlistingcount();
 

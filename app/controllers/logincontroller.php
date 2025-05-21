@@ -11,6 +11,27 @@ class loginController{
         $this->conn = $database->connection();
     }
 
+    function checkSessionTimeout($timeout_duration = 7200) //2 hours
+            {
+                session_start();
+
+                if (isset($_SESSION['last_activity'])) {
+                    if ((time() - $_SESSION['last_activity']) > $timeout_duration) {
+                        session_unset();
+                        session_destroy();
+
+                        header("Location: http://localhost/ceylonestatefinal/public/index.php?page=login&timeout=1");
+                        exit();
+                    } else {
+                        $_SESSION['last_activity'] = time();
+                    }
+                } else {
+                    header("Location: http://localhost/ceylonestatefinal/public/index.php?page=login");
+                    exit();
+                }
+                echo $_SESSION['last_activity'];
+            }
+
     public function loginUser()
     {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,6 +42,7 @@ class loginController{
                 echo "All fields are required.";
                 return false;
             }
+            
 
             // Prepare the SQL statement
             $stmt = $this->conn->prepare("SELECT * FROM mpuser WHERE Email = :email");
@@ -34,6 +56,8 @@ class loginController{
                     $_SESSION['user_id'] = $user['UserId'];
                     $_SESSION['user_role'] = $user['UserRole'];
                     $_SESSION['user_email'] = $user['Email'];
+                    $_SESSION['last_activity'] = time();
+
                     header("Location: http://localhost/ceylonestatefinal/public/index.php?page=home");
                     
                     
