@@ -55,6 +55,7 @@
                 </div>
                 <button type="submit" class="w-full bg-[#1A5C38] text-white py-2 rounded hover:bg-[#154c2f]">Sign Up</button>
             </form>
+            
         </div>
     </main>
 

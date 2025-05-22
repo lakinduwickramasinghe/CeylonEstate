@@ -47,7 +47,14 @@ class userController
         }
         $userModel->createUser($firstName, $lastName, $email, $password, $phone, $userRole);
 
-        header("Location: http://localhost/ceylonestatefinal/public/index.php?page=reg-success");
+        if(isset($_POST['authLevel'])) {
+            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=adminpanel&view=users&table=admin");
+        }
+        else{
+            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=reg-success");
+        }
+
+        
         
     }
 }
@@ -89,6 +96,13 @@ class userController
         $userModel = new User();
         $user = $userModel->getUserProfile($userId);
         require_once __DIR__ . '/../views/updateprofile.php';
+    }
+
+    public function returnUsersOnRole($role)
+    {
+        $userModel = new User();
+        $users = $userModel->getGivenTabke($role);
+        return $users;
     }
 
 

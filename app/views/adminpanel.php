@@ -15,7 +15,17 @@
     <div class="flex flex-1">
         <!-- Sidebar -->
     <?php
+    require_once __DIR__ . '/../../app/controllers/userController.php';
+
     $currentView = $_GET['view'] ?? 'dashboard';
+    $userModel = new User();
+    $userId = $_SESSION['user_id'] ?? null;
+    $user = $userModel->getUserProfile($userId);
+
+
+    require_once __DIR__ . '/../../app/controllers/listingController.php';
+    $listingController = new listingController();
+    $listings = $listingController->returnAllListings();
     ?>
 
     <aside class="bg-white w-64 p-6 shadow-lg">
@@ -30,7 +40,7 @@
             Listings
             </a>
 
-            <a href="index.php?page=adminpanel&view=users"
+            <a href="index.php?page=adminpanel&view=users&table=admin"
             class="block <?= $currentView === 'users' ? 'text-[#1A5C38] font-semibold bg-gray-100' : 'text-gray-700' ?> hover:bg-gray-100 p-2 rounded">
             Users
             </a>
@@ -40,9 +50,9 @@
             Analytics
             </a>
 
-            <a href="index.php?page=adminpanel&view=settings"
-            class="block <?= $currentView === 'settings' ? 'text-[#1A5C38] font-semibold bg-gray-100' : 'text-gray-700' ?> hover:bg-gray-100 p-2 rounded">
-            Settings
+            <a href="index.php?page=adminpanel&view=myprofile"
+            class="block <?= $currentView === 'myprofile' ? 'text-[#1A5C38] font-semibold bg-gray-100' : 'text-gray-700' ?> hover:bg-gray-100 p-2 rounded">
+            My Profile
             </a>
         </nav>
     </aside>

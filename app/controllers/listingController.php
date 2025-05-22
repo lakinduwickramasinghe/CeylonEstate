@@ -20,6 +20,11 @@ class listingController
         $forsale = $Listing->getAllForSaleListings();
         require_once __DIR__ . '/../views/forsale.php';
     }
+    public function returnAllListings(){
+        $Listing = new Listing();
+        $data = $Listing->getAllForSaleListings();
+        return $data;
+    }
 
         public function viewforrentpage()
     {

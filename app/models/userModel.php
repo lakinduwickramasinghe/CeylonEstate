@@ -103,6 +103,14 @@ class User{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function getGivenTabke($userRole)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM mpuser WHERE UserRole = :user_role");
+        $stmt->bindParam(':user_role', $userRole);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
 }
 

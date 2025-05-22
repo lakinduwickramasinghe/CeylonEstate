@@ -26,23 +26,18 @@
                 </thead>
                 <tbody id="listingsTable">
                     <?php
-                    // Sample data - replace with actual database query
-                    $listings = [
-                        ['id' => 1, 'title' => 'Luxury Villa in Kandy', 'price' => 25000000, 'listing_type' => 'Selling', 'property_type' => 'House'],
-                        ['id' => 2, 'title' => 'Apartment for Rent in Colombo', 'price' => 75000, 'listing_type' => 'Renting', 'property_type' => 'Apartment'],
-                        ['id' => 3, 'title' => 'Land in Matale', 'price' => 5000000, 'listing_type' => 'Selling', 'property_type' => 'Land'],
-                    ];
+
 
                     foreach ($listings as $listing) {
                         echo <<<HTML
                         <tr class="border-b border-gray-200 hover:bg-gray-50">
-                            <td class="p-3">{$listing['title']}</td>
-                            <td class="p-3">{$listing['price']}</td>
-                            <td class="p-3">{$listing['listing_type']}</td>
-                            <td class="p-3">{$listing['property_type']}</td>
+                            <td class="p-3">{$listing['Title']}</td>
+                            <td class="p-3">{$listing['Price']}</td>
+                            <td class="p-3">{$listing['ListingType']}</td>
+                            <td class="p-3">{$listing['PropertyType']}</td>
                             <td class="p-3 space-x-2">
-                                <a href="admin-edit-listing.php?id={$listing['id']}" class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition-all duration-300">Edit</a>
-                                <button onclick="deleteListing({$listing['id']})" class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</button>
+                                <a href="admin-edit-listing.php?id={$listing['ListingId']}" class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition-all duration-300">Edit</a>
+                                <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</button>
                             </td>
                         </tr>
                         HTML;

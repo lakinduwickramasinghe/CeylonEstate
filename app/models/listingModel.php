@@ -212,7 +212,7 @@ class Listing{
 
     public function getAllForSaleListings()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM propertylisting WHERE ListingType = 'Selling'");
+        $stmt = $this->conn->prepare("SELECT * FROM propertylisting");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
