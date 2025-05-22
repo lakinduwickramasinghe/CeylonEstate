@@ -11,10 +11,8 @@
      <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Main Content -->
     <main class="flex flex-1 items-center justify-center py-12">
         <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full text-center">
-            <!-- Illustration -->
             <div class="flex justify-center mb-6">
                 <div class="w-20 h-20 bg-[#1A5C38] rounded-full flex items-center justify-center">
                     <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -22,15 +20,12 @@
                     </svg>
                 </div>
             </div>
-            <!-- Error Message -->
             <h1 class="text-3xl font-bold text-gray-800 mb-2">404 - Page Not Found</h1>
             <p class="text-gray-600 mb-2">The requested path <span class="font-semibold text-gray-800"><?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?></span> was not found.</p>
             <p class="text-gray-600 mb-4">Oops! It seems the page you’re looking for doesn’t exist or has been moved. Let’s get you back on track!</p>
-            <!-- Timestamp -->
             <p class="text-sm text-gray-500 mb-6">Error logged at 01:05 AM +0530, Tuesday, May 20, 2025</p>
-            <!-- Buttons -->
             <div class="flex justify-center space-x-4">
-                <a href="http://localhost/ceylonestatefinal/public/index.php?page=home">
+                <a href="index.php?page=home">
                     <button class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Back to Home</button>
                 </a>
                 <a href="mailto:lakindusudaraka@gmail.com">

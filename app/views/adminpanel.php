@@ -6,6 +6,20 @@
     <title>Ceylon Estate - Admin Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
+<?php
+
+        if (!isset($_SESSION['user_role'])) {
+            echo "Session not set";
+            exit();
+            header("Location: index.php?page=login");
+        }
+            if ($_SESSION['user_role'] != 'Admin') { 
+                header("Location: index.php?page=login");
+                exit();
+            }
+
+?>    
 <body class="bg-green-50 min-h-screen flex flex-col">
 
     <!-- Header -->
@@ -26,6 +40,8 @@
     require_once __DIR__ . '/../../app/controllers/listingController.php';
     $listingController = new listingController();
     $listings = $listingController->returnAllListings();
+
+    
     ?>
 
     <aside class="bg-white w-64 p-6 shadow-lg">
@@ -43,11 +59,6 @@
             <a href="index.php?page=adminpanel&view=users&table=admin"
             class="block <?= $currentView === 'users' ? 'text-[#1A5C38] font-semibold bg-gray-100' : 'text-gray-700' ?> hover:bg-gray-100 p-2 rounded">
             Users
-            </a>
-
-            <a href="index.php?page=adminpanel&view=analytics"
-            class="block <?= $currentView === 'analytics' ? 'text-[#1A5C38] font-semibold bg-gray-100' : 'text-gray-700' ?> hover:bg-gray-100 p-2 rounded">
-            Analytics
             </a>
 
             <a href="index.php?page=adminpanel&view=myprofile"

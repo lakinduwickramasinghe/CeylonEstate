@@ -34,10 +34,8 @@ class User{
         $role = $UserRole ?? 'user';
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-        // Prepare the SQL statement
         $stmt = $this->conn->prepare("INSERT INTO mpuser (FirstName, LastName, Email, Password, ContactNumber, UserRole) VALUES (:first_name, :last_name, :email, :password, :contact_number, :user_role)");
 
-        // Bind parameters
         $stmt->bindParam(':first_name', $firstName);
         $stmt->bindParam(':last_name', $lastName);
         $stmt->bindParam(':email', $email);
@@ -45,7 +43,6 @@ class User{
         $stmt->bindParam(':contact_number', $contactNumber);
         $stmt->bindParam(':user_role', $UserRole);
 
-        // Execute the statement
         if ($stmt->execute()) {
             return true;
         } else {
@@ -56,13 +53,10 @@ class User{
 
     public function getUserProfile($userId)
     {
-        // Prepare the SQL statement
         $stmt = $this->conn->prepare("SELECT * FROM mpuser WHERE UserID = :user_id");
 
-        // Bind parameters
         $stmt->bindParam(':user_id', $userId);
 
-        // Execute the statement
         if ($stmt->execute()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
@@ -72,18 +66,14 @@ class User{
 
     public function updateUserProfile($userId, $firstName, $lastName, $email, $contactNumber)
     {
-
-        // Prepare the SQL statement
         $stmt = $this->conn->prepare("UPDATE mpuser SET FirstName = :first_name, LastName = :last_name, Email = :email, ContactNumber = :contact_number WHERE UserID = :user_id");
 
-        // Bind parameters
         $stmt->bindParam(':first_name', $firstName);
         $stmt->bindParam(':last_name', $lastName);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':contact_number', $contactNumber);
         $stmt->bindParam(':user_id', $userId);
 
-        // Execute the statement
         if ($stmt->execute()) {
             return true;
         } else {
@@ -111,7 +101,5 @@ class User{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    
 }
-
 ?>

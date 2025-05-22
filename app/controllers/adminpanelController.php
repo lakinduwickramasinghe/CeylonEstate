@@ -14,7 +14,7 @@ class apController{
         $userController = new userController();
         $result = $userController->isLoggedin();
         if($result =='false') {
-            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=login");
+            header("Location: index.php?page=login");
             exit();
         }
         $listing = new Listing();
@@ -26,6 +26,8 @@ class apController{
         $users = $user->getAllUsers();
 
         $listings = $listing->getAllListings();
+
+        $propertyValuation = $listing->getPropertyValuation();
         require_once __DIR__ . '/../views/adminpanel.php';
 
 

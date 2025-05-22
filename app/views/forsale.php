@@ -12,13 +12,12 @@
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Hero Section -->
     <section class="py-16 text-center relative">
         <div class="container mx-auto px-4 relative z-10">
             <h2 class="text-3xl font-bold text-gray-800 mb-6">Search Properties for Sale</h2>
             <div class="bg-white text-black p-4 rounded-lg shadow-lg max-w-4xl mx-auto flex space-x-4">
                 <div class="flex flex-col">
-                <form action="http://localhost/ceylonestatefinal/public/index.php" method="GET">
+                <form action="index.php" method="GET">
                         <input type="hidden" name="page" value="search-sell">
                         <select id="property-type" name="property-type" class="p-2 bg-gray-200 rounded focus:outline-none">
                             <option value="" disabled selected>Select Property Type</option>
@@ -52,7 +51,7 @@
                     $imageSrc = 'data:image/jpeg;base64,' . $imageData;
                     $price = number_format($listing['Price'],0);
                     echo <<<HTML
-                    <a href="http://localhost/ceylonestatefinal/public/index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
+                    <a href="index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
                         <div class="bg-white rounded-xl shadow-lg overflow-hidden h-80 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                             <div class="relative w-full h-40">
                                 <img src="$imageSrc" alt="Property" class="w-full h-full object-cover rounded-t-xl">
@@ -89,28 +88,9 @@
                     HTML;
                 }
                 ?>
-
-                <!-- <div class="bg-white rounded-lg shadow-lg overflow-hidden h-72">
-                    <img src="/public/images/image01.jpg" alt="Property 1" class="w-full h-32 object-cover">
-                    <div class="p-2">
-                        <p class="text-lg font-bold text-red-600">Rs.200,000,000</p>
-                        <p class="text-gray-600 text-sm">No 91 Old Town Street Kandy</p>
-                        <div class="flex space-x-2 mt-1 text-xs text-gray-500">
-                            <span>3 Bedroom</span>
-                            <span>3 Bathroom</span>
-                            <span>360m House Size</span>
-                        </div>
-                    </div>
-                </div> -->
-
-
-
             </div>
         </div>
     </section>
-
-    
-    
 
     <!-- Footer -->
     <?php require_once __DIR__ . '/../views/includes/footer.php'; ?>

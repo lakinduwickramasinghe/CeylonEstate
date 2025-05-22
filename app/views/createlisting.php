@@ -13,6 +13,16 @@
         }
     </style>
 </head>
+    
+    <!-- Role Validation code -->
+
+    <?php
+    require __DIR__ .  '/../../app/controllers/logincontroller.php';
+    $controller = new LoginController();
+    $controller->roleValidate();
+    ?>
+
+
 <body class="flex flex-col min-h-screen bg-green-50">
 
     <!-- Header -->
@@ -24,7 +34,7 @@
             <h1 class="text-2xl font-bold text-gray-800 mb-3 text-center">Create New Listing</h1>
             <div class="space-y-3">
                 <!-- Form Section -->
-                <form action="http://localhost/ceylonestatefinal/public/index.php?page=create-listing" method="POST" enctype="multipart/form-data" class="space-y-3">
+                <form action="index.php?page=create-listing" method="POST" enctype="multipart/form-data" class="space-y-3">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Column 1 -->
                         <div class="space-y-3">

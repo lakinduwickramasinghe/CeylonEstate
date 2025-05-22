@@ -11,10 +11,9 @@
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Main Content -->
+
     <main class="flex flex-1 items-center justify-center py-12">
         <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full text-center">
-            <!-- Checkmark Icon -->
             <div class="flex justify-center mb-6">
                 <div class="w-16 h-16 bg-[#1A5C38] rounded-full flex items-center justify-center">
                     <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -22,15 +21,14 @@
                     </svg>
                 </div>
             </div>
-            <!-- Success Message -->
             <h1 class="text-3xl font-bold text-gray-800 mb-4">Registration Successful!</h1>
             <p class="text-gray-600 mb-6">Welcome to Ceylon Estate! Your account has been created successfully. You can now log in to start exploring properties or list your own.</p>
-            <!-- Buttons -->
+
             <div class="flex justify-center space-x-4">
-                <a href="http://localhost/ceylonestatefinal/public/index.php?page=login">
+                <a href="index.php?page=login">
                     <button class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Log In Now</button>
                 </a>
-                <a href="http://localhost/ceylonestatefinal/public/index.php?page=home">
+                <a href="index.php?page=home">
                     <button class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 transition-all duration-300">Back to Home</button>
                 </a>
             </div>

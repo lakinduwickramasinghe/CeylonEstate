@@ -13,11 +13,11 @@
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Main Content -->
+    
     <main class="flex-grow flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg w-96">
             <h2 class="text-2xl font-bold text-center mb-6">SIGN IN</h2>
-            <form action="http://localhost/ceylonestatefinal/public/index.php?page=login-controller" method="POST">
+            <form action="index.php?page=login-controller" method="POST">
                 <div class="mb-4">
                     <label for="email" class="block text-sm font-medium mb-1">Email :</label>
                     <input type="email" name="email" id="email" placeholder="Enter your email here..." class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-green-700">
@@ -27,7 +27,7 @@
                     <input type="password" name="password" id="password" placeholder="Enter your password here..." class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-green-700">
                 </div>
                 <div class="flex justify-between text-sm mb-6">
-                    <a href="http://localhost/ceylonestatefinal/public/index.php?page=signup" class="text-black hover:underline">Don't have an account? SIGN UP</a>
+                    <a href="index.php?page=signup" class="text-black hover:underline">Don't have an account? SIGN UP</a>
                     <a href="#" class="text-blue-600 hover:underline">Forgot Password</a>
                 </div>
                 <button type="submit" class="w-full bg-green-700 text-white py-2 rounded hover:bg-green-800">Sign In</button>

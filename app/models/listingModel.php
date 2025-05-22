@@ -11,6 +11,13 @@ class Listing{
         $this->conn = $database->connection();
     }
 
+    public function getPropertyValuation()
+    {
+        $stmt = $this->conn->prepare("SELECT SUM(Price) as total_valuation FROM propertylisting WHERE ListingType = 'Selling'");
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function searchforrentlisting($type, $minprice, $maxprice, $keyword) {
         $query = "
             SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price 
@@ -83,7 +90,6 @@ class Listing{
             $params[':keyword'] = '%' . $keyword . '%';
         }
 
-        // Combine conditions into the main query
         if (count($conditions) > 0) {
             $query .= " AND " . implode(' AND ', $conditions);
         }
@@ -212,7 +218,7 @@ class Listing{
 
     public function getAllForSaleListings()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM propertylisting");
+        $stmt = $this->conn->prepare("SELECT * FROM propertylisting WHERE ListingType = 'Selling'");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -11,26 +11,36 @@ class loginController{
         $this->conn = $database->connection();
     }
 
-    function checkSessionTimeout($timeout_duration = 7200) //2 hours
-            {
-                session_start();
-
-                if (isset($_SESSION['last_activity'])) {
-                    if ((time() - $_SESSION['last_activity']) > $timeout_duration) {
-                        session_unset();
-                        session_destroy();
-
-                        header("Location: http://localhost/ceylonestatefinal/public/index.php?page=login&timeout=1");
-                        exit();
-                    } else {
-                        $_SESSION['last_activity'] = time();
-                    }
-                } else {
-                    header("Location: http://localhost/ceylonestatefinal/public/index.php?page=login");
-                    exit();
-                }
-                echo $_SESSION['last_activity'];
+function checkSessionTimeout($timeout_duration = 7200) //2 hours
+{
+    if (isset($_SESSION['last_activity'])) {
+        if ((time() - $_SESSION['last_activity']) > $timeout_duration) {
+            session_unset();
+            session_destroy();
+            header("Location: index.php?page=login&timeout=1");
+            exit();
+        } else {
+            $_SESSION['last_activity'] = time();
+        }
+    } else {
+        header("Location: index.php?page=login");
+        exit();
+    }
+}
+    public function roleValidate(){
+        if (!isset($_SESSION['user_role'])) {
+            echo "Session not set";
+            exit();
+            header("Location: index.php?page=login");
+        }
+            if ($_SESSION['user_role'] != 'Admin' & $_SESSION['user_role'] != 'Seller') {
+                echo "Access denied";
+                echo $_SESSION['user_role'];    
+                exit();
+                header("Location: index.php?page=login");
             }
+
+    }
 
     public function loginUser()
     {
@@ -44,7 +54,6 @@ class loginController{
             }
             
 
-            // Prepare the SQL statement
             $stmt = $this->conn->prepare("SELECT * FROM mpuser WHERE Email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
@@ -52,13 +61,12 @@ class loginController{
             if ($stmt->rowCount() > 0) {
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
                 if (password_verify($password, $user['Password'])) {
-                    // Password is correct, set session variables
                     $_SESSION['user_id'] = $user['UserId'];
                     $_SESSION['user_role'] = $user['UserRole'];
                     $_SESSION['user_email'] = $user['Email'];
                     $_SESSION['last_activity'] = time();
 
-                    header("Location: http://localhost/ceylonestatefinal/public/index.php?page=home");
+                    header("Location: index.php?page=home");
                     
                     
                     return true;
@@ -75,6 +83,6 @@ class loginController{
     public function logoutUser()
     {
         session_destroy();
-        header("Location: http://localhost/ceylonestatefinal/public/index.php?page=home");
+        header("Location: index.php?page=home");
     }
 }

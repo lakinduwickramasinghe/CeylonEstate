@@ -2,21 +2,23 @@
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-3xl font-bold custom-dark-green">Customer Reviews</h2>
-                <a href="http://localhost/ceylonestatefinal/public/index.php?page=addreview">
+                <a href="index.php?page=addreview">
                     <button class="bg-[#2E7D32] text-[#ffffff] px-4 py-2 rounded hover:bg-[#1d4f20] hover:text-white text-sm transition-colors duration-300">Add Review</button>
                 </a>
             </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <?php 
+
+
+            foreach($reviews as $review) {
                     require_once __DIR__ . '/../models/userModel.php';
                     $userModel = new User();
-                    $user = $userModel->getUserProfile($_SESSION['user_id']);
+                    $user = $userModel->getUserProfile($review['UserId']);
 
                     $firstName = $user['FirstName'];
                     $lastName = $user['LastName'];
 
-            foreach($reviews as $review) {
                 echo '<div class="bg-white rounded-lg shadow-lg p-4 mb-4">';
                 echo '<div class="mb-2">';
                 echo '<h3 class="font-bold text-sm">' . htmlspecialchars($firstName) . " " . htmlspecialchars($lastName) .   '</h3>';
@@ -34,8 +36,5 @@
                 echo '</div>';
             }
             ?>
-
-            
-
         </div>
     </section>

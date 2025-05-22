@@ -1,3 +1,10 @@
+    <!-- Role Validation code -->
+
+    <?php
+    require __DIR__ .  '/../../app/controllers/logincontroller.php';
+    $controller = new LoginController();
+    $controller->roleValidate();
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +19,7 @@
             background-position: center;
         }
     </style>
-</head>
+</head>    
 <body class="flex flex-col min-h-screen bg-green-50">
 
     <?php
@@ -27,10 +34,12 @@
     <main class="flex-1 flex items-center justify-center py-12">
         <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
             <h1 class="text-2xl font-bold text-gray-800 mb-3 text-center">Update Listing</h1>
+
             <form action="index.php?page=update-listing" method="POST" enctype="multipart/form-data" class="space-y-3">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Column 1 -->
                     <div class="space-y-3">
+                        <input type="hidden" name="authLevel" value="Admin">
                         <div>
                             <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
                             <input type="text" id="title" name="title" <?php echo'value="' . htmlspecialchars($listing['Title']) . '"' ?> class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" required>
@@ -67,7 +76,7 @@
 
                     <!-- Column 2 -->
                     <div class="space-y-3">
-<div>
+                        <div>
                             <label for="ListingType" class="block text-sm font-medium text-gray-700">Listing Type:</label>
                             <select id="ListingType" name="ListingType" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" required>
                                 <option value="selling" <?= $listing['ListingType'] == 'selling' ? 'selected' : '' ?>>Selling</option>
@@ -101,10 +110,17 @@
                     </div>
                 </div>
 
-
-                <!-- Submit Button -->
-                <div class="text-center mt-3">
-                    <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Update Listing</button>
+                <!-- Buttons Aligned -->
+                <div class="flex justify-center space-x-4 mt-4">
+                    <div class="text-center">
+                        <button onclick="history.back()" class="flex items-center bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                            Go Back
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Update Listing</button>
+                    </div>
                 </div>
             </form>
         </div>

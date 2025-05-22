@@ -8,7 +8,6 @@ switch($page){
     case 'login':
         require '../app/views/login.php';
         break;
-
     case 'home':
         require '../app/controllers/listingController.php';
         $controller = new listingController();
@@ -17,7 +16,6 @@ switch($page){
         require '../app/controllers/logincontroller.php';
         $loginController = new loginController();
         $loginController->checkSessionTimeout();
-        
         break;
     case 'login-controller':
         require '../app/controllers/loginController.php';
@@ -41,7 +39,6 @@ switch($page){
         require '../app/controllers/userController.php';
         $controller = new userController();
         $controller->loadUpdateUserForm();
-
         break;
     case 'user-profile-update':
         require '../app/controllers/userController.php';
@@ -82,7 +79,6 @@ switch($page){
         $controller = new listingController();
         $controller->viewforrentpage();
         break;
-
     case 'delete-listing':
         require '../app/controllers/listingController.php';
         $controller = new listingController();
@@ -130,9 +126,7 @@ switch($page){
         $controller = new listingController();
         $result = $controller->rentsearch();
         break;
-        
     default:
-        // Handle 404 error or redirect to home
         require '../app/views/404.php';
         break;
 

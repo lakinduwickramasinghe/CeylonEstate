@@ -11,18 +11,20 @@
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Main Content -->
+
     <main class="flex flex-1 py-8">
         <div class="container mx-auto px-4 flex">
             <!-- Sidebar -->
             <aside class="w-64 bg-white shadow-lg rounded-lg p-4 mr-6">
                 <h3 class="text-lg font-semibold mb-4 text-gray-700">Menu</h3>
                 <ul class="space-y-2">
-                    <li><a href="http://localhost/ceylonestatefinal/public/index.php?page=user-profile" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">Update Profile</a></li>
-                    <li><a href="http://localhost/ceylonestatefinal/public/index.php?page=manage-listing" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Manage Listings</a></li>
-                    <li><a href="#" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Boost Listing</a></li>
-                    <li><a href="#" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Settings</a></li>
-                    <li><a href="#" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Messages</a></li>
+                    <li><a href="index.php?page=user-profile" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">Update Profile</a></li>
+                    <?php if($user["UserRole"] == "Seller"){
+                        echo '<li><a href="index.php?page=manage-listing" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Manage Listings</a></li>';
+                    }
+                        
+                    ?>
+                    
                 </ul>
             </aside>
 
@@ -37,7 +39,7 @@
                     </div>
                     <h3 class="text-xl font-semibold text-gray-700"><?php echo isset($user["FirstName"]) ? htmlspecialchars($user["FirstName"]): ''; ?> <?php echo isset($user["LastName"]) ? htmlspecialchars($user["LastName"]): ''; ?></h3>
                 </div>
-                <form class="space-y-4" method="POST" action="http://localhost/ceylonestatefinal/public/index.php?page=user-profile-update">
+                <form class="space-y-4" method="POST" action="index.php?page=user-profile-update">
                     <div>
                         <label for="first-name" class="block text-sm font-medium text-gray-700">First Name :</label>
                         <input type="text" name="firstname"<?php echo isset($user["FirstName"]) ? ' value="'. htmlspecialchars($user["FirstName"]).'"' : ''; ?> id="first-name" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
@@ -57,12 +59,12 @@
                     </div>
                     
                     <div class="text-center">
-                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=user-profile">
+                        <a href="index.php?page=user-profile">
                             <button type="button" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">Cancel</button>
                         </a>
 
 
-                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=user-profile-update">
+                        <a href="index.php?page=user-profile-update">
                         <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Update Profile</button>
                         </a>
                         

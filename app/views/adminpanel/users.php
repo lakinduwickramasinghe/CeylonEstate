@@ -1,8 +1,7 @@
-<!-- Main Content -->
+
 <main class="flex-1 p-8">
     <h2 class="text-3xl font-bold text-[#1A5C38] mb-6">Manage Users</h2>
 
-    <!-- Top Buttons for Adding User Types -->
     <div class="flex space-x-4 mb-6">
         <a href="index.php?page=adminpanel&view=users&table=admin">
             <button class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Admin</button>
@@ -15,9 +14,8 @@
         </a>        
     </div>
 
-    <!-- Search Bar + Add User Button -->
     <div class="flex items-center justify-between mb-6">
-        <input type="text" id="searchInput" placeholder="Search users..." class="w-2/3 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" onkeyup="searchUsers()">
+        <input type="text" id="searchInput" placeholder="Search users..." class="w-2/3 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
 
         <a href="index.php?page=adminpanel&view=adduser">
             <button class="ml-4 bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">
@@ -56,7 +54,7 @@
                         echo "<td class='p-3'>{$user['CreatedAt']}</td>";
                         echo "<td class='p-3 space-x-2'>
                                 <a href='index.php?page=adminpanel&view=edituser&id={$user['UserId']}' class='text-blue-600 hover:underline'>Edit</a>
-                                <a href='index.php?page=adminpanel&view=deleteuser&id={$user['UserId']}' class='text-red-600 hover:underline'>Delete</a>
+                                <a href='' class='text-red-600 hover:underline'>Delete</a>
                               </td>";
                         echo "</tr>";
                     }

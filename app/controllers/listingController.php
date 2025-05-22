@@ -37,24 +37,22 @@ class listingController
         $userId = $_SESSION['user_id'] ?? null;
  
         $listings = $Listing->getAllListingsByUserId($userId);
-        require_once __DIR__ . '/../views/user_managelisting.php';
-
+        require_once __DIR__ . '/../views/seller_managelisting.php';
     }
 
     public function loadeditlisting()
     {
         $Listing = new Listing();
         $listingId = $_GET['id'] ?? null;
+        $authLevel = $_GET['authLevel'] ?? null;
         if ($listingId) {
             $listing = $Listing->getListingById($listingId);
             if ($listing) {
                 require_once __DIR__ . '/../views/updatelisting.php';
             } else {
-                // Handle case where listing is not found
                 echo "Listing not found.";
             }
         } else {
-            // Handle case where listing ID is not provided
             echo "No listing ID provided.";
         }
     }
@@ -78,21 +76,17 @@ class listingController
             $zipCode = $_POST['ZipCode'];
 
             
-                // Update listing in the database
                 $Listing = new Listing();
                 $result = $Listing->updateListing($listingId,$title,$description,$areaSize,$bedrooms,$bathrooms,$propertyType,$listingType,$status,$addressLine01,$addressLine02,$city,$zipCode,$price);
                 
-                if($result){
-                    header("Location: /ceylonestatefinal/public/index.php?page=manage-listing");
-                    exit();
-                } else {
-                    echo "Failed to update listing.";
-                }
-
-            
+            if(isset($_POST['authLevel'])) {
+                header("Location: index.php?page=adminpanel&view=listings");
+            }
+            else{
+                header("Location: index.php?page=manage-listing");
+            }
         }
         else {
-            // Handle case where form is not submitted
             echo "Form not submitted.";
         }
     }
@@ -103,11 +97,15 @@ class listingController
         if ($listingId) {
             $Listing = new Listing();
             $Listing->deleteListing($listingId);
-            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=manage-listing");
-            exit();
+
         } else {
-            // Handle case where listing ID is not provided
             echo "No listing ID provided.";
+        }
+        if(isset($_POST['authLevel'])) {
+            header("Location: index.php?page=adminpanel&view=listings");
+        }
+        else{
+            header("Location: index.php?page=manage-listing");
         }
     }
     
@@ -120,11 +118,9 @@ class listingController
             if ($listing) {
                 require_once __DIR__ . '/../views/viewlisting.php';
             } else {
-                // Handle case where listing is not found
                 echo "Listing not found.";
             }
         } else {
-            // Handle case where listing ID is not provided
             echo "No listing ID provided.";
         }
     }
@@ -170,12 +166,10 @@ class listingController
             $userId = $_SESSION['user_id'] ?? null;
             
             if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                // Read image binary data from the temporary upload path
                 $imageData = file_get_contents($_FILES['image']['tmp_name']);
             
 
             $Listing = new Listing();
-            // Save to DB using the model
             $Listing->createListing(
                 $title,
                 $description,
@@ -193,8 +187,7 @@ class listingController
                 $price,
                 $imageData
             );
-            // Redirect or confirm
-            header("Location: /ceylonestatefinal/public/index.php?page=manage-listing");
+            header("Location: index.php?page=manage-listing");
             exit();
         }
     }

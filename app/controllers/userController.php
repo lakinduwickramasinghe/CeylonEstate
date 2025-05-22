@@ -48,10 +48,10 @@ class userController
         $userModel->createUser($firstName, $lastName, $email, $password, $phone, $userRole);
 
         if(isset($_POST['authLevel'])) {
-            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=adminpanel&view=users&table=admin");
+            header("Location: index.php?page=adminpanel&view=users&table=admin");
         }
         else{
-            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=reg-success");
+            header("Location: index.php?page=reg-success");
         }
 
         
@@ -76,8 +76,13 @@ class userController
         if($status) {
             $_SESSION['user_id'] = $userId;
             $_SESSION['user_email'] = $email;
-
-            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=user-profile");
+            if(isset($_POST['authLevel'])) {
+                header("Location: index.php?page=adminpanel&view=users&table=admin");
+            }
+            else{
+                header("Location: index.php?page=user-profile");
+            }
+            
             exit();
         } else {
             echo "Failed to update profile.";
@@ -89,7 +94,7 @@ class userController
     {
         $result = $this->isLoggedin();
         if($result =='false') {
-            header("Location: http://localhost/ceylonestatefinal/public/index.php?page=login");
+            header("Location: index.php?page=login");
             exit();
         }
         $userId = $_SESSION['user_id'];

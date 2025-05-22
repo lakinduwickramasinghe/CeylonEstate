@@ -14,7 +14,6 @@
     <!-- Main Content -->
     <main class="flex-1 py-12">
         <div class="container mx-auto px-4 max-w-4xl">
-            <!-- Hero Image -->
             <div class="relative rounded-lg overflow-hidden mb-8">
                 <?php
                 $imageData = base64_encode($listing['ImageInfo']);
@@ -27,9 +26,9 @@
                 </div>
             </div>
 
-            <!-- Property Details Card -->
+            
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <!-- Go Back Button -->
+                
                 <div class="mb-6">
                     <button onclick="history.back()" class="flex items-center bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +71,7 @@
                     <p class="text-gray-700"><?php echo htmlspecialchars($listing['Description']); ?></p>
                 </div>
                 <div class="mt-6 text-center">
-                    <a href="mailto:help@ceylonestate.lk?subject=Inquiry%20About%20Listing:%20<?php echo urlencode($listing['Title']); ?>" class="inline-block bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Contact Seller</a>
+                    <a href="" class="inline-block bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Contact Seller</a>
                 </div>
             </div>
         </div>

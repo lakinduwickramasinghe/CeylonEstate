@@ -12,12 +12,11 @@
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Main Content -->
 
     <main class="flex-grow flex items-center justify-center">
         <div class="bg-white p-8 rounded-lg shadow-lg w-96">
             <h2 class="text-2xl font-bold text-center mb-6 text-[#1A5C38]">SIGN UP</h2>
-            <form method="POST" action="http://localhost/ceylonestatefinal/public/index.php?page=signup-controller">
+            <form method="POST" action="index.php?page=signup-controller">
             <div class="mb-4">
                     <label for="first-name" class="block text-sm font-medium mb-1">First Name :</label>
                     <input type="text" required name="firstname" id="first-name"  placeholder="John" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
@@ -51,7 +50,7 @@
                     <label for="terms" class="text-sm">Agree to Terms and Conditions</label>
                 </div>
                 <div class="mb-4 text-sm text-blue-600">
-                    <a href="http://localhost/ceylonestatefinal/public/index.php?page=login" class="hover:underline">Already has an account? Log in</a>
+                    <a href="index.php?page=login" class="hover:underline">Already has an account? Log in</a>
                 </div>
                 <button type="submit" class="w-full bg-[#1A5C38] text-white py-2 rounded hover:bg-[#154c2f]">Sign Up</button>
             </form>

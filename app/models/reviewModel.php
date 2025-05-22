@@ -25,7 +25,7 @@ class ReviewModel{
             return false;
         }
     }
-
+    
     public function getReviews()
     {
         $query = "SELECT * FROM review";

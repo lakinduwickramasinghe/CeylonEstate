@@ -1,10 +1,11 @@
 <main class="flex-grow flex items-center justify-center">
     <div class="p-10 rounded-lg border border-gray-300 shadow-md">
         <h2 class="text-2xl font-bold text-center mb-6 text-[#1A5C38]">Add User</h2>
-        <form method="POST" action="http://localhost/ceylonestatefinal/public/index.php?page=signup-controller">
+        <form method="POST" action="index.php?page=signup-controller">
             <div class="grid grid-cols-2 gap-6 mb-6">
                 <input type="hidden" name="authLevel" value="admin">
-                <!-- Left Column -->
+                
+                
                 <div>
                     <div class="mb-4">
                         <label for="first-name" class="block text-sm font-medium mb-1 text-gray-700">First Name :</label>
@@ -19,7 +20,8 @@
                         <input type="email" name="email" required id="email" placeholder="abc@gmail.com" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38] transition-all duration-300">
                     </div>
                 </div>
-                <!-- Right Column -->
+
+
                 <div>
                     <div class="mb-4">
                         <label for="password" class="block text-sm font-medium mb-1 text-gray-700">Password :</label>

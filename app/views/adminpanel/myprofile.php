@@ -1,12 +1,8 @@
 
-    <!-- Main Content -->
     <main class="flex flex-1 py-8">
         <div class="container mx-auto px-4 flex">
-
-
-            <!-- Profile Content -->
-            <div class="flex-1 shadow-lg rounded-lg p-6">
-                <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">MY PROFILE</h2>
+            <div class="flex-1 rounded-lg p-6">
+                <h2 class="text-[#1A5C38] font-bold text-3xl font-bold mb-6 text-left">MY PROFILE</h2>
                 <div class="flex items-center mb-6">
                     <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mr-4">
                         <svg class="w-10 h-10 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +11,7 @@
                     </div>
                     <h3 class="text-xl font-semibold text-gray-700"><?php echo isset($user["FirstName"]) ? htmlspecialchars($user["FirstName"]): ''; ?> <?php echo isset($user["LastName"]) ? htmlspecialchars($user["LastName"]): ''; ?></h3>
                 </div>
-                <form class="space-y-4" method="POST" action="http://localhost/ceylonestatefinal/public/index.php?page=user-profile-update">
+                <form class="space-y-4" method="POST" action="index.php?page=user-profile-update">
                     <div>
                         <label for="first-name" class="block text-sm font-medium text-gray-700">First Name :</label>
                         <input type="text" name="firstname"<?php echo isset($user["FirstName"]) ? ' value="'. htmlspecialchars($user["FirstName"]).'"' : ''; ?> id="first-name" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
@@ -28,25 +24,19 @@
                         <label for="email" class="block text-sm font-medium text-gray-700">Email :</label>
                         <input type="email" name="email" <?php echo isset($user["Email"]) ? ' value="'. htmlspecialchars($user["Email"]).'"' : ''; ?> id="email" value="" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" >
                     </div>
-
                     <div>
                         <label for="contactnumber" class="block text-sm font-medium text-gray-700">Contact Number :</label>
                         <input type="tel" name="contactnumber"<?php echo isset($user["ContactNumber"]) ? ' value="'. htmlspecialchars($user["ContactNumber"]).'"' : ''; ?> id="contactnumber" value="" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
                     </div>
-                    
                     <div class="text-center">
-                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=user-profile">
+                        <a href="index.php?page=user-profile">
                             <button type="button" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">Cancel</button>
                         </a>
-
-
-                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=user-profile-update">
-                        <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Update Profile</button>
+                        <a href="index.php?page=user-profile-update">
+                            <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Update Profile</button>
                         </a>
-                        
                     </div>
                 </form>
             </div>
         </div>
     </main>
-

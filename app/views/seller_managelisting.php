@@ -1,3 +1,11 @@
+    <!-- Role Validation code -->
+
+    <?php
+    require __DIR__ .  '/../../app/controllers/logincontroller.php';
+    $controller = new LoginController();
+    $controller->roleValidate();
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +26,8 @@
             <aside class="w-64 bg-white shadow-lg rounded-lg p-4 mr-6">
                 <h3 class="text-lg font-semibold mb-4 text-gray-700">Menu</h3>
                 <ul class="space-y-2">
-                    <li><a href="http://localhost/ceylonestatefinal/public/index.php?page=user-profile" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Update Profile</a></li>
-                    <li><a href="http://localhost/ceylonestatefinal/public/index.php?page=manage-listing" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">Manage Listings</a></li>
-                    <li><a href="#" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Boost Listing</a></li>
-                    <li><a href="#" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Settings</a></li>
-                    <li><a href="#" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Messages</a></li>
+                    <li><a href="index.php?page=user-profile" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Update Profile</a></li>
+                    <li><a href="index.php?page=manage-listing" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">Manage Listings</a></li>
                 </ul>
             </aside>
 
@@ -30,7 +35,7 @@
             <div class="flex-1 bg-white shadow-lg rounded-lg p-6">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-semibold text-gray-800">My Listings</h2>
-                    <a href="http://localhost/ceylonestatefinal/public/index.php?page=add-listing" class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Create New Listing</a>
+                    <a href="index.php?page=add-listing" class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Create New Listing</a>
                 </div>
                 <div class="space-y-4">
                     <?php
@@ -53,8 +58,8 @@
                                         </div>
                                     </div>
                                     <div class="space-x-2">
-                                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=edit-listing&id=' . $listing['ListingId'] . '" class="bg-[#1A5C38] text-white px-3 py-1 rounded hover:bg-[#154c2f] transition-all duration-300">Edit</a>
-                                        <form method="POST" action="http://localhost/ceylonestatefinal/public/index.php?page=delete-listing&id=' . $listing['ListingId'] . '" style="display:inline;">
+                                        <a href="index.php?page=edit-listing&id=' . $listing['ListingId'] . '" class="bg-[#1A5C38] text-white px-3 py-1 rounded hover:bg-[#154c2f] transition-all duration-300">Edit</a>
+                                        <form method="POST" action="index.php?page=delete-listing&id=' . $listing['ListingId'] . '" style="display:inline;">
                                             <input type="hidden" name="listing_id" value="' . $listing['ListingId'] . '">
                                             <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</button>
                                         </form>

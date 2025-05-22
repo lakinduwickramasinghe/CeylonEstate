@@ -7,11 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
-
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Hero Section -->
     <section class="py-16 text-center relative">
         <div class="absolute inset-0 z-0" style="background-image: url('/CeylonEstateFinal/public/images/bg01.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
             <div class="absolute inset-0 bg-black opacity-40"></div>
@@ -21,53 +19,28 @@
             <h1 class="text-4xl font-bold mb-4 text-white">FIND YOUR DREAM HOME</h1>
             <p class="text-lg mb-8 text-white">Now you can save yourself the stress, time, and hidden costs, with hundreds of homes for you to choose from.</p>
 
-            <!-- Creative Redirect Section -->
             <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <!-- For Sale Card -->
                 <div class="relative rounded-lg overflow-hidden shadow-lg group">
                     <div class="absolute inset-0 z-0" style="background-image: url('/CeylonEstateFinal/public/images/property_sale.jpg'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#1A5C38]/80 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     </div>
                     <div class="relative z-10 p-6 flex flex-col items-center justify-center h-48">
                         <h3 class="text-xl font-bold text-white mb-4">Buy Your Dream Home</h3>
-                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=forsale" class="bg-white text-[#1A5C38] px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300">Explore For Sale</a>
+                        <a href="index.php?page=forsale" class="bg-white text-[#1A5C38] px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300">Explore For Sale</a>
                     </div>
                 </div>
-                <!-- For Rent Card -->
                 <div class="relative rounded-lg overflow-hidden shadow-lg group">
                     <div class="absolute inset-0 z-0" style="background-image: url('/CeylonEstateFinal/public/images/property_rent.jpg'); background-size: cover; background-position: center;">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#1A5C38]/80 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
                     </div>
                     <div class="relative z-10 p-6 flex flex-col items-center justify-center h-48">
                         <h3 class="text-xl font-bold text-white mb-4">Rent Your Perfect Space</h3>
-                        <a href="http://localhost/ceylonestatefinal/public/index.php?page=forrent" class="bg-white text-[#1A5C38] px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300">Explore For Rent</a>
+                        <a href="index.php?page=forrent" class="bg-white text-[#1A5C38] px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300">Explore For Rent</a>
                     </div>
                 </div>
             </div>
         </div>
     </section> 
-
-    <!-- Js for the front end (toggle between sell and rent button) -->
-    <script>
-        function selectOption(option) {
-            const sellBtn = document.getElementById('sellBtn');
-            const rentBtn = document.getElementById('rentBtn');
-
-            if (option === 'sell') {
-                sellBtn.classList.add('bg-[#1A5C38]', 'text-white');
-                sellBtn.classList.remove('bg-gray-200', 'text-black');
-
-                rentBtn.classList.add('bg-gray-200', 'text-black');
-                rentBtn.classList.remove('bg-[#1A5C38]', 'text-white');
-            } else if (option === 'rent') {
-                rentBtn.classList.add('bg-[#1A5C38]', 'text-white');
-                rentBtn.classList.remove('bg-gray-200', 'text-black');
-
-                sellBtn.classList.add('bg-gray-200', 'text-black');
-                sellBtn.classList.remove('bg-[#1A5C38]', 'text-white');
-            }
-        }
-    </script>
 
     <!-- Properties For Sale Section -->
     <section class="py-16">
@@ -80,7 +53,7 @@
                     $imageSrc = 'data:image/jpeg;base64,' . $imageData;
                     $price = number_format($listing['Price'],0);
                     echo <<<HTML
-                    <a href="http://localhost/ceylonestatefinal/public/index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
+                    <a href="index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
                         <div class="bg-white rounded-xl shadow-lg overflow-hidden h-80 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                             <div class="relative w-full h-40">
                                 <img src="$imageSrc" alt="Property" class="w-full h-full object-cover rounded-t-xl">
@@ -118,12 +91,12 @@
                 }
                 ?>
             </div>
-            <!-- Redirect Button -->
             <div class="mt-8 flex justify-center">
-                <a href="http://localhost/ceylonestatefinal/public/index.php?page=search-sell" class="bg-[#1A5C38] text-white px-6 py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold">View All For Sale</a>
+                <a href="index.php?page=forsale" class="bg-[#1A5C38] text-white px-6 py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold">View All For Sale</a>
             </div>
         </div>
     </section>
+
 
     <!-- Properties For Rent Section -->
     <section class="py-16">
@@ -136,7 +109,7 @@
                     $imageSrc = 'data:image/jpeg;base64,' . $imageData;
                     $price = number_format($listing['Price'],0);
                     echo <<<HTML
-                    <a href="http://localhost/ceylonestatefinal/public/index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
+                    <a href="index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
                         <div class="bg-white rounded-xl shadow-lg overflow-hidden h-80 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
                             <div class="relative w-full h-40">
                                 <img src="$imageSrc" alt="Property" class="w-full h-full object-cover rounded-t-xl">
@@ -174,9 +147,8 @@
                 }
                 ?>              
             </div>
-            <!-- Redirect Button -->
             <div class="mt-8 flex justify-center">
-                <a href="http://localhost/ceylonestatefinal/public/index.php?page=search-rent" class="bg-[#1A5C38] text-white px-6 py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold">View All For Rent</a>
+                <a href="index.php?page=forrent" class="bg-[#1A5C38] text-white px-6 py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold">View All For Rent</a>
             </div>
         </div>
     </section>
@@ -189,7 +161,6 @@
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Contact Information -->
                 <div class="text-white text-center lg:text-left animate-fade-in" style="animation-delay: 0.2s;">
                     <h3 class="text-4xl font-extrabold mb-8 drop-shadow-lg">Need to Talk?</h3>
                     <p class="text-2xl mb-6 drop-shadow">We’re Here to Help You</p>

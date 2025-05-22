@@ -1,7 +1,7 @@
         <main class="flex-1 p-8">
             <h1 class="text-3xl font-bold text-[#1A5C38] mb-8">Admin Dashboard</h1>
 
-            <!-- Quick Stats -->
+            
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
                 <div class="bg-white p-6 rounded-lg shadow-lg">
                     <h3 class="text-lg font-semibold text-gray-700">Total Listings</h3>
@@ -12,12 +12,12 @@
                     <p class="text-2xl font-bold text-[#1A5C38] mt-2"><?php echo $userCount['count']?></p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h3 class="text-lg font-semibold text-gray-700">Pending Approvals</h3>
-                    <p class="text-2xl font-bold text-[#1A5C38] mt-2">12</p>
+                    <h3 class="text-lg font-semibold text-gray-700">Total Land Valuation</h3>
+                    <p class="text-2xl font-bold text-[#1A5C38] mt-2">LKR <?php echo number_format($propertyValuation['total_valuation'] / 1000000, 2, '.', ',') . 'M'; ?></p>
                 </div>
             </div>
 
-            <!-- Recent Listings Table -->
+           
             <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
                 <h2 class="text-xl font-bold text-[#1A5C38] mb-4">Recent Listings</h2>
                 <div class="overflow-x-auto">
@@ -28,19 +28,34 @@
                                 <th class="py-2 px-4">Title</th>
                                 <th class="py-2 px-4">Price</th>
                                 <th class="py-2 px-4">Status</th>
-                                <th class="py-2 px-4">Actions</th>
+                                <?php foreach ($listings as $listing) {
+                                $priceDisplay = "Rs. {$listing['Price']}";
+                                if (strtolower($listing['ListingType']) === 'renting') {
+                                    $priceDisplay .= "/month";
+                                }
+
+                                echo <<<HTML
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4">{$listing['ListingId']}</td>
+                                        <td class="py-2 px-4">{$listing['Title']}</td>
+                                        <td class="py-2 px-4 text-red-600">{$priceDisplay}</td>
+                                        <td class="py-2 px-4">{$listing['Status']}</td>
+                                    </tr>
+                                HTML;
+                            }
+                            ?>
                             </tr>
                         </thead>
                         <tbody>
 
-                        <!-- Code block 01 -->
+
 
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- User Management Overview -->
+            
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 <h2 class="text-xl font-bold text-[#1A5C38] mb-4">User Management</h2>
                 <div class="overflow-x-auto">
@@ -51,11 +66,20 @@
                                 <th class="py-2 px-4">First Name</th>
                                 <th class="py-2 px-4">Last Name</th>
                                 <th class="py-2 px-4">Role</th>
-                                <th class="py-2 px-4">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- code block 02 -->
+                                <?php foreach ($users as $user) {
+                                echo <<<HTML
+                                    <tr class="border-b">
+                                        <td class="py-2 px-4">{$user['UserId']}</td>
+                                        <td class="py-2 px-4">{$user['FirstName']}</td>
+                                        <td class="py-2 px-4">{$user['LastName']}</td>
+                                        <td class="py-2 px-4">{$user['UserRole']}</td>
+                                    </tr>
+                                HTML;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>

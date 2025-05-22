@@ -10,15 +10,13 @@
     <!-- Header -->
     <?php require '../app/views/includes/header.php'; ?>
 
-    <!-- Main Content -->
     <main class="flex-1 py-12">
         <div class="container mx-auto px-4 max-w-2xl">
             <h1 class="text-3xl font-bold text-[#1A5C38] mb-8 text-center">Add a Review</h1>
 
             <!-- Review Form -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <form action="http://localhost/ceylonestatefinal/public/index.php?page=savereview" method="POST" class="space-y-6">
-                    <!-- Rating -->
+                <form action="index.php?page=savereview" method="POST" class="space-y-6">
                     <div>
                         <label for="rating" class="block text-gray-700 font-semibold mb-2">Rating (1-5 Stars)</label>
                         <select id="rating" name="rating" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
@@ -30,13 +28,11 @@
                         </select>
                     </div>
 
-                    <!-- Review Description -->
                     <div>
                         <label for="review-description" class="block text-gray-700 font-semibold mb-2">Review Description</label>
                         <textarea id="review-description" name="description" placeholder="Write your review here..." rows="5" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A5C38]"></textarea>
                     </div>
 
-                    <!-- Submit Button -->
                     <div class="text-center">
                         <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Submit Review</button>
                     </div>

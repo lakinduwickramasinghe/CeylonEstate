@@ -9,7 +9,7 @@ class ReviewController
     {
     }
 
-    public function loadReviewPage()
+    public function loadReviewPage():void
     {
         $reviewModel = new ReviewModel();
         $reviews = $reviewModel->getReviews();
@@ -24,11 +24,9 @@ class ReviewController
         $reviewModel = new ReviewModel();
         $result = $reviewModel->addReview($userId,$starRating, $description);
         if ($result) {
-            // Redirect to the reviews page or show a success message
-            header('Location: http://localhost/ceylonestatefinal/public/index.php?page=aboutus');
+            header('Location: index.php?page=aboutus');
             exit();
         } else {
-            // Handle error (e.g., show an error message)
             echo "Error adding review.";
         }
     }

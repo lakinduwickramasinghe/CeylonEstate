@@ -18,10 +18,9 @@
 
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
-
-    <!-- Main Content -->
+    
     <main class="flex-1">
-        <!-- Who We Are Section -->
+
         <section class="bg-green-100 py-12 px-4">
             <div class="container mx-auto text-center">
                 <h1 class="text-4xl font-bold text-gray-800 mb-4">Who We Are?</h1>
@@ -32,7 +31,6 @@
             </div>
         </section>
 
-        <!-- Contact Section with Background Image -->
         <section class="bg-image py-16 relative">
             <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
                 <div class="text-white mb-8 md:mb-0">
