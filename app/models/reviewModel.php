@@ -25,6 +25,36 @@ class ReviewModel{
             return false;
         }
     }
+    public function deleteReview($userId, $reviewId)
+    {
+        $query = "DELETE FROM review WHERE UserId = :user_id AND ReviewId = :review_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':review_id', $reviewId);
+
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function returnAllReviews() {
+        $query = "SELECT * FROM review";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+
+    public function getUserReviews($userId)
+    {
+        $query = "SELECT * FROM review WHERE UserId = :user_id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     
     public function getReviews()
     {

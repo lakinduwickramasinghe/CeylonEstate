@@ -126,6 +126,17 @@ switch($page){
         $controller = new listingController();
         $result = $controller->rentsearch();
         break;
+    case 'user-review':
+        require '../app/controllers/reviewController.php';
+        $controller = new reviewController();
+        $controller->loadUserReviews();
+        break;
+    case 'delete-review':
+        $reviewId = $_GET['id'] ?? null;
+        require '../app/controllers/reviewController.php';
+        $controller = new reviewController();
+        $controller->deleteReview($reviewId);
+        break;
     default:
         require '../app/views/404.php';
         break;

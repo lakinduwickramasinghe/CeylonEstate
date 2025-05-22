@@ -61,6 +61,11 @@
             Users
             </a>
 
+            <a href="index.php?page=adminpanel&view=review"
+            class="block <?= $currentView === 'review' ? 'text-[#1A5C38] font-semibold bg-gray-100' : 'text-gray-700' ?> hover:bg-gray-100 p-2 rounded">
+            Reviews
+            </a>
+
             <a href="index.php?page=adminpanel&view=myprofile"
             class="block <?= $currentView === 'myprofile' ? 'text-[#1A5C38] font-semibold bg-gray-100' : 'text-gray-700' ?> hover:bg-gray-100 p-2 rounded">
             My Profile

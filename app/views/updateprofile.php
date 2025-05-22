@@ -19,6 +19,7 @@
                 <h3 class="text-lg font-semibold mb-4 text-gray-700">Menu</h3>
                 <ul class="space-y-2">
                     <li><a href="index.php?page=user-profile" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">Update Profile</a></li>
+                    <li><a href="index.php?page=user-review" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200   ">My Reviews</a></li>
                     <?php if($user["UserRole"] == "Seller"){
                         echo '<li><a href="index.php?page=manage-listing" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Manage Listings</a></li>';
                     }
