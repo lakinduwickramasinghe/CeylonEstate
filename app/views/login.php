@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceylon Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body> 
+<body class="flex flex-col min-h-screen bg-gray-100"> 
     
-<body class="flex flex-col min-h-screen bg-gray-100">
 
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
