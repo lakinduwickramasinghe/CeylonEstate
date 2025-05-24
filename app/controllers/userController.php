@@ -5,13 +5,6 @@ require_once __DIR__ . '/../models/userModel.php';
 
 class userController
 {
-    private $conn;
-
-    public function __construct()
-    {
-        $database = new Database();
-        $this->conn = $database->connection();
-    }
     public function isLoggedin(){
         if(empty($_SESSION['user_id']) || empty($_SESSION['user_email'])) {
             return true;

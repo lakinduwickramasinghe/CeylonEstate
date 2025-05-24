@@ -37,10 +37,7 @@ class SignupController {
         }
         else{
             require_once __DIR__ . '/../views/registration_successfull.php';
-        }
-
-        
-        
+        }  
     }
     }
 
