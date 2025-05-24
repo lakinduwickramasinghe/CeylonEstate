@@ -161,51 +161,51 @@ class ListingModel{
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function updateListing($listingId, $title, $description, $areaSize, $bedrooms, $bathrooms, $propertyType, $listingType, $status, $addressLine01, $addressLine02, $city, $zipCode, $price)
-{
-    try {
-        $stmt = $this->conn->prepare("UPDATE propertylisting SET 
-            Title = :title,
-            Description = :description,
-            AreaSize = :area_size,
-            Bedrooms = :bedrooms,
-            Bathrooms = :bathrooms,
-            PropertyType = :property_type,
-            ListingType = :listing_type,
-            Status = :status,
-            AddressLine01 = :address_line01,
-            AddressLine02 = :address_line02,
-            City = :city,
-            ZipCode = :zip_code,
-            Price = :price
-        WHERE ListingId = :listing_id");
+    {
+        try {
+            $stmt = $this->conn->prepare("UPDATE propertylisting SET 
+                Title = :title,
+                Description = :description,
+                AreaSize = :area_size,
+                Bedrooms = :bedrooms,
+                Bathrooms = :bathrooms,
+                PropertyType = :property_type,
+                ListingType = :listing_type,
+                Status = :status,
+                AddressLine01 = :address_line01,
+                AddressLine02 = :address_line02,
+                City = :city,
+                ZipCode = :zip_code,
+                Price = :price
+            WHERE ListingId = :listing_id");
 
-        $stmt->bindParam(':listing_id', $listingId);
-        $stmt->bindParam(':title', $title);
-        $stmt->bindParam(':description', $description);
-        $stmt->bindParam(':area_size', $areaSize);
-        $stmt->bindParam(':bedrooms', $bedrooms);
-        $stmt->bindParam(':bathrooms', $bathrooms);
-        $stmt->bindParam(':property_type', $propertyType);
-        $stmt->bindParam(':listing_type', $listingType);
-        $stmt->bindParam(':status', $status);
-        $stmt->bindParam(':address_line01', $addressLine01);
-        $stmt->bindParam(':address_line02', $addressLine02);
-        $stmt->bindParam(':city', $city);
-        $stmt->bindParam(':zip_code', $zipCode);
-        $stmt->bindParam(':price', $price);
-        
-        if($stmt->execute()){
-            return true;
-        }
-        else{
+            $stmt->bindParam(':listing_id', $listingId);
+            $stmt->bindParam(':title', $title);
+            $stmt->bindParam(':description', $description);
+            $stmt->bindParam(':area_size', $areaSize);
+            $stmt->bindParam(':bedrooms', $bedrooms);
+            $stmt->bindParam(':bathrooms', $bathrooms);
+            $stmt->bindParam(':property_type', $propertyType);
+            $stmt->bindParam(':listing_type', $listingType);
+            $stmt->bindParam(':status', $status);
+            $stmt->bindParam(':address_line01', $addressLine01);
+            $stmt->bindParam(':address_line02', $addressLine02);
+            $stmt->bindParam(':city', $city);
+            $stmt->bindParam(':zip_code', $zipCode);
+            $stmt->bindParam(':price', $price);
+            
+            if($stmt->execute()){
+                return true;
+            }
+            else{
+                return false;
+            }
+            
+        } catch (PDOException $e) {
+            error_log("Error updating listing: " . $e->getMessage());
             return false;
         }
-        
-    } catch (PDOException $e) {
-        error_log("Error updating listing: " . $e->getMessage());
-        return false;
     }
-}
 
 
     public function getListingById($listingId)
@@ -215,8 +215,6 @@ class ListingModel{
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC); 
     }
-
-    
 
     public function getAllForSaleListings()
     {
@@ -255,6 +253,12 @@ class ListingModel{
     } 
 
     public function getAllListings()
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM propertylisting");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+        public function getRecentListings()
     {
         $stmt = $this->conn->prepare("SELECT * FROM propertylisting ORDER BY RAND() LIMIT 6");
         $stmt->execute();

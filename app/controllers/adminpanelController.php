@@ -22,6 +22,8 @@ class AdminpanelController{
         $listings = $listing->getAllListings();
         $propertyValuation = $listing->getPropertyValuation();
 
+        $top6 = $listing->getRecentListings();
+
         require __DIR__ . '/../views/adminpanel.php';
     }
 

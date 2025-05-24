@@ -28,7 +28,7 @@
                                 <th class="py-2 px-4">Title</th>
                                 <th class="py-2 px-4">Price</th>
                                 <th class="py-2 px-4">Status</th>
-                                <?php foreach ($listings as $listing) {
+                                <?php foreach ($top6 as $listing) {
                                 $priceDisplay = "Rs. {$listing['Price']}";
                                 if (strtolower($listing['ListingType']) === 'renting') {
                                     $priceDisplay .= "/month";
