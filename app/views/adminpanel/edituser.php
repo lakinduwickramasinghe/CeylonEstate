@@ -1,8 +1,8 @@
             
             <?php
             require_once __DIR__ . '/../../../app/controllers/userController.php';
-            $userModel = new User();
-            $userId = $_GET['id'];
+            $userModel = new UserModel();
+            $userId = $tableName;
             $userInfo = $userModel->getUserProfile($userId);
             ?>
 
@@ -16,7 +16,7 @@
                     </div>
                     <h3 class="text-xl font-semibold text-gray-700"><?php echo isset($userInfo["FirstName"]) ? htmlspecialchars($userInfo["FirstName"]): ''; ?> <?php echo isset($userInfo["LastName"]) ? htmlspecialchars($userInfo["LastName"]): ''; ?></h3>
                 </div>
-                <form class="space-y-4" method="POST" action="index.php?page=user-profile-update">
+                <form class="space-y-4" method="POST" action="/ceylonestatefinal/public/updateprofile/updateUser">
                     <div>
                         <input type="hidden" name="authLevel" value="Admin">
 
@@ -38,14 +38,12 @@
                     </div>
                     
                     <div class="text-center">
-                        <a href="index.php?page=adminpanel&view=users&table=admin">
+                        <a href="/ceylonestatefinal/public/adminpanel/load/users/admin">
                             <button type="button" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">Cancel</button>
                         </a>
 
+                    <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Update Profile</button>
 
-                        <a href="index.php?page=user-profile-update">
-                        <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Update Profile</button>
-                        </a>
                         
                     </div>
                 </form>

@@ -16,7 +16,7 @@
 
             <!-- Review Form -->
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <form action="index.php?page=savereview" method="POST" class="space-y-6">
+                <form action="/ceylonestatefinal/public/review/addreview" method="POST" class="space-y-6">
                     <div>
                         <label for="rating" class="block text-gray-700 font-semibold mb-2">Rating (1-5 Stars)</label>
                         <select id="rating" name="rating" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">

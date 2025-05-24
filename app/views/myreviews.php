@@ -19,12 +19,12 @@
             <aside class="w-64 bg-white shadow-lg rounded-lg p-4 mr-6">
                 <h3 class="text-lg font-semibold mb-4 text-gray-700">Menu</h3>
                 <ul class="space-y-2">
-                    <li><a href="index.php?page=user-profile" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Update Profile</a></li>
-                    <li><a href="index.php?page=user-review" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">My Reviews</a></li>
+                    <li><a href="/ceylonestatefinal/public/updateprofile" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Update Profile</a></li>
+                    <li><a href="/ceylonestatefinal/public/updateprofile/myreviews" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">My Reviews</a></li>
                     <?php
                         $userRole = $_SESSION['user_role'] ?? null;
                         if ($userRole === "Seller") {
-                            echo '<li><a href="index.php?page=manage-listing" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Manage Listings</a></li>';
+                            echo '<li><a href="/ceylonestatefinal/public/updateprofile/managelisting" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Manage Listings</a></li>';
                         }
 
                         
@@ -52,7 +52,7 @@
                                     <p class="text-yellow-500">{$stars} ({$review['StarRating']}/5)</p>
                                 </div>
                                 <div class="space-x-2">
-                                    <a href="index.php?page=delete-review&id={$review['ReviewId']}" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</a>
+                                    <a href="/ceylonestatefinal/public/review/delete/{$review['ReviewId']}" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</a>
                                 </div>
                             </div>
                             <p class="text-gray-700">{$review['Description']}</p>
@@ -64,7 +64,7 @@
                 
                 <!-- Add Review Button -->
                 <div class="text-center mt-6">
-                    <a href="index.php?page=addreview" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Add a Review</a>
+                    <a href="/ceylonestatefinal/public/review" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Add a Review</a>
                 </div>
             </div>
 

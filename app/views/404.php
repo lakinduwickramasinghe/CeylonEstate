@@ -25,7 +25,7 @@
             <p class="text-gray-600 mb-4">Oops! It seems the page you’re looking for doesn’t exist or has been moved. Let’s get you back on track!</p>
             <p class="text-sm text-gray-500 mb-6">Error logged at 01:05 AM +0530, Tuesday, May 20, 2025</p>
             <div class="flex justify-center space-x-4">
-                <a href="index.php?page=home">
+                <a href="/ceylonestatefinal/public/">
                     <button class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Back to Home</button>
                 </a>
                 <a href="mailto:lakindusudaraka@gmail.com">

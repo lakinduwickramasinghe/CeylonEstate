@@ -1,4 +1,8 @@
-
+<?php 
+require_once __DIR__ . '/../../../app/models/userModel.php';
+$usermodel = new UserModel();
+$user = $usermodel->getUserProfile($_SESSION['user_id']);
+?>
     <main class="flex flex-1 py-8">
         <div class="container mx-auto px-4 flex">
             <div class="flex-1 rounded-lg p-6">
@@ -11,7 +15,8 @@
                     </div>
                     <h3 class="text-xl font-semibold text-gray-700"><?php echo isset($user["FirstName"]) ? htmlspecialchars($user["FirstName"]): ''; ?> <?php echo isset($user["LastName"]) ? htmlspecialchars($user["LastName"]): ''; ?></h3>
                 </div>
-                <form class="space-y-4" method="POST" action="index.php?page=user-profile-update">
+                <form class="space-y-4" method="POST" action="/ceylonestatefinal/public/updateprofile/updateUser">
+                    <input type="hidden" name="authLevel" value="admin">
                     <div>
                         <label for="first-name" class="block text-sm font-medium text-gray-700">First Name :</label>
                         <input type="text" name="firstname"<?php echo isset($user["FirstName"]) ? ' value="'. htmlspecialchars($user["FirstName"]).'"' : ''; ?> id="first-name" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
@@ -29,12 +34,12 @@
                         <input type="tel" name="contactnumber"<?php echo isset($user["ContactNumber"]) ? ' value="'. htmlspecialchars($user["ContactNumber"]).'"' : ''; ?> id="contactnumber" value="" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
                     </div>
                     <div class="text-center">
-                        <a href="index.php?page=user-profile">
+                        <a href="/ceylonestatefinal/public/adminpanel/load/myprofile">
                             <button type="button" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">Cancel</button>
                         </a>
-                        <a href="index.php?page=user-profile-update">
+
                             <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Update Profile</button>
-                        </a>
+
                     </div>
                 </form>
             </div>

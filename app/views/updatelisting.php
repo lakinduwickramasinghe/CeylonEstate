@@ -1,10 +1,3 @@
-    <!-- Role Validation code -->
-
-    <?php
-    require __DIR__ .  '/../../app/controllers/logincontroller.php';
-    $controller = new LoginController();
-    $controller->roleValidate();
-    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,12 +14,6 @@
     </style>
 </head>    
 <body class="flex flex-col min-h-screen bg-green-50">
-
-    <?php
-    $listingid = $_GET['id'];
-    $_SESSION['listingid'] = $listingid;
-    ?>
-
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
@@ -35,11 +22,15 @@
         <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
             <h1 class="text-2xl font-bold text-gray-800 mb-3 text-center">Update Listing</h1>
 
-            <form action="index.php?page=update-listing" method="POST" enctype="multipart/form-data" class="space-y-3">
+            <form action="/ceylonestatefinal/public/listing/updatelisting" method="POST" class="space-y-3">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Column 1 -->
                     <div class="space-y-3">
-                        <input type="hidden" name="authLevel" value="Admin">
+                        <?php if($_SESSION['user_role']=='Admin') {
+                            echo'<input type="hidden" name="authLevel" value="Admin">';
+                        } ?>
+                        <input type="hidden" name="ListingID" value="<?php echo $listingId;?>">
+                        
                         <div>
                             <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
                             <input type="text" id="title" name="title" <?php echo'value="' . htmlspecialchars($listing['Title']) . '"' ?> class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" required>

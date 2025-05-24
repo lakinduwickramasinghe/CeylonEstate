@@ -50,13 +50,7 @@
     </main>
 
     <!-- Customer Reviews Section -->
-     <?php
-        require_once __DIR__ . '/../controllers/reviewController.php';
-        $reviewController = new ReviewController();
-        $reviewController->loadReviewPage();
-        ?>
-    
-
+    <?php require_once __DIR__ . '/../views/reviewsection.php';?>
     <!-- Footer -->
     <?php require_once __DIR__ . '/../views/includes/footer.php'; ?>
 </body>

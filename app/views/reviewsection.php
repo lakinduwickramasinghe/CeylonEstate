@@ -2,7 +2,7 @@
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-3xl font-bold custom-dark-green">Customer Reviews</h2>
-                <a href="index.php?page=addreview">
+                <a href="/ceylonestatefinal/public/review">
                     <button class="bg-[#2E7D32] text-[#ffffff] px-4 py-2 rounded hover:bg-[#1d4f20] hover:text-white text-sm transition-colors duration-300">Add Review</button>
                 </a>
             </div>
@@ -13,7 +13,8 @@
 
             foreach($reviews as $review) {
                     require_once __DIR__ . '/../models/userModel.php';
-                    $userModel = new User();
+                    $userModel = new UserModel();
+
                     $user = $userModel->getUserProfile($review['UserId']);
 
                     $firstName = $user['FirstName'];

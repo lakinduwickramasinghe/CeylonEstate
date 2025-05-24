@@ -13,30 +13,19 @@
         }
     </style>
 </head>
-    
-    <!-- Role Validation code -->
-
-    <?php
-    require __DIR__ .  '/../../app/controllers/logincontroller.php';
-    $controller = new LoginController();
-    $controller->roleValidate();
-    ?>
-
 
 <body class="flex flex-col min-h-screen bg-green-50">
 
     <!-- Header -->
     <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
 
-    <!-- Main Content -->
     <main class="flex-1 flex items-center justify-center py-12">
         <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-3xl">
             <h1 class="text-2xl font-bold text-gray-800 mb-3 text-center">Create New Listing</h1>
             <div class="space-y-3">
                 <!-- Form Section -->
-                <form action="index.php?page=create-listing" method="POST" enctype="multipart/form-data" class="space-y-3">
+                <form action="/ceylonestatefinal/public/listing/createlisting" method="POST" enctype="multipart/form-data" class="space-y-3">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Column 1 -->
                         <div class="space-y-3">
                             <div>
                                 <label for="title" class="block text-sm font-medium text-gray-700">Title:</label>
@@ -73,7 +62,8 @@
                                 <input type="text" id="zipCode" name="zipCode" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" required>
                             </div>
                         </div>
-                        <!-- Column 2 -->
+
+
                         <div class="space-y-3">
                             <div>
                                 <label for="listingType" class="block text-sm font-medium text-gray-700">Listing Type:</label>
@@ -100,20 +90,20 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Description (Full Width) -->
+
+
                     <div class="space-y-3">
                         <div>
                             <label for="description" class="block text-sm font-medium text-gray-700">Description:</label>
                             <textarea id="description" name="description" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]" rows="3" required></textarea>
                         </div>
                     </div>
-                    <!-- Image Upload Section -->
+
                     <div class="mt-3">
                         <label class="block text-sm font-medium text-gray-700 mb-2">Upload Images:</label>
                         <input type="file" name="image" class="w-full p-2 bg-gray-200 rounded focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
                     
                     </div>
-                    <!-- Submit Button -->
                     <div class="text-center mt-3">
                         <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Create Listing</button>
                     </div>

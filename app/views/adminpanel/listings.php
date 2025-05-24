@@ -2,7 +2,7 @@
     <main class="flex-1 p-8">
         <div class="flex justify-between items-center mb-6">
             <h2 class="text-3xl font-bold text-[#1A5C38]">Manage Listings</h2>
-            <a href="index.php?page=add-listing" class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Add New Listing</a>
+            <a href="/ceylonestatefinal/public/listing" class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Add New Listing</a>
         </div>
 
         <div class="mb-6">
@@ -32,9 +32,9 @@
                             <td class="p-3">{$listing['PropertyType']}</td>
                             <td class="p-3">
                                 <div class="inline-flex space-x-2">
-                                    <a href="index.php?page=viewlisting&id={$listing['ListingId']}" class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition-all duration-300">View</a>
-                                    <a href="index.php?page=edit-listing&id={$listing['ListingId']}&authLevel=Admin" class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition-all duration-300">Edit</a>
-                                    <form action="index.php?page=delete-listing&id={$listing['ListingId']}" method="post" class="inline-flex">
+                                    <a href="/ceylonestatefinal/public/viewlisting/load/{$listing['ListingId']}" class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition-all duration-300">View</a>
+                                    <a href="/ceylonestatefinal/public/listing/loadupdatelisting/{$listing['ListingId']}&authLevel=Admin" class="bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition-all duration-300">Edit</a>
+                                    <form action="/ceylonestatefinal/public/listing/deletelisting/{$listing['ListingId']}/admin" method="post" class="inline-flex">
                                         <button class="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</button>
                                         <input type="hidden" name="authLevel" value="admin">
                                     </form>

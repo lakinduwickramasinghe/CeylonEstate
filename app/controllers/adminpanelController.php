@@ -3,32 +3,31 @@ require_once __DIR__ . '/../models/listingModel.php';
 require_once __DIR__ . '/../models/userModel.php';
 require_once __DIR__ . '/../controllers/userController.php';
 
-class apController{
+class AdminpanelController{
 
-    public function __construct()
-    {
+    public function load($currentPage = null, $table = null){
+        $page = $currentPage;
+        $tableName = $table;
+        $userController = new userController();
+        $result = $userController->isLoggedin();
+        if($result =='false') {
+            header("Location: /ceylonestatefinal/public/login");
+            exit();
+        }
+        $listing = new ListingModel();
+        $listingCount = $listing->returnlistingcount();
+        $user = new UserModel();
+        $userCount = $user->returnusercount();
+        $users = $user->getAllUsers();
+        $listings = $listing->getAllListings();
+        $propertyValuation = $listing->getPropertyValuation();
+
+        require __DIR__ . '/../views/adminpanel.php';
     }
 
     public function loadAdminPanel()
     {
-        $userController = new userController();
-        $result = $userController->isLoggedin();
-        if($result =='false') {
-            header("Location: index.php?page=login");
-            exit();
-        }
-        $listing = new Listing();
-        $listingCount = $listing->returnlistingcount();
 
-        $user = new User();
-        $userCount = $user->returnusercount();
-
-        $users = $user->getAllUsers();
-
-        $listings = $listing->getAllListings();
-
-        $propertyValuation = $listing->getPropertyValuation();
-        require_once __DIR__ . '/../views/adminpanel.php';
 
 
         

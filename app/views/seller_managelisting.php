@@ -1,11 +1,3 @@
-    <!-- Role Validation code -->
-
-    <?php
-    require __DIR__ .  '/../../app/controllers/logincontroller.php';
-    $controller = new LoginController();
-    $controller->roleValidate();
-    ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,8 +18,9 @@
             <aside class="w-64 bg-white shadow-lg rounded-lg p-4 mr-6">
                 <h3 class="text-lg font-semibold mb-4 text-gray-700">Menu</h3>
                 <ul class="space-y-2">
-                    <li><a href="index.php?page=user-profile" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Update Profile</a></li>
-                    <li><a href="index.php?page=manage-listing" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">Manage Listings</a></li>
+                    <li><a href="/ceylonestatefinal/public/updateprofile" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200">Update Profile</a></li>
+                    <li><a href="/ceylonestatefinal/public/updateprofile/myreviews" class="block bg-gray-100 py-2 px-4 rounded hover:bg-gray-200  ">My Reviews</a></li>
+                    <li><a href="/ceylonestatefinal/public/updateprofile/managelisting" class="block bg-[#1A5C38] text-white py-2 px-4 rounded hover:bg-[#154c2f]">Manage Listings</a></li>
                 </ul>
             </aside>
 
@@ -35,7 +28,7 @@
             <div class="flex-1 bg-white shadow-lg rounded-lg p-6">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-semibold text-gray-800">My Listings</h2>
-                    <a href="index.php?page=add-listing" class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Create New Listing</a>
+                    <a href="/ceylonestatefinal/public/listing" class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Create New Listing</a>
                 </div>
                 <div class="space-y-4">
                     <?php
@@ -45,6 +38,11 @@
                             foreach ($listings as $listing) {
                                 $imageData = base64_encode($listing['ImageInfo']);
                                 $imageSrc = 'data:image/jpeg;base64,' . $imageData;
+                                if($_SESSION['user_role'] == 'admin') {
+                                    $auth = 'Admin';
+                                } else {
+                                    $auth = null;
+                                }
                                 echo '
                                 <div class="bg-gray-100 p-4 rounded-lg shadow-sm flex justify-between items-center gap-4">
                                     <div class="flex items-center gap-4">
@@ -58,10 +56,11 @@
                                         </div>
                                     </div>
                                     <div class="space-x-2">
-                                        <a href="index.php?page=edit-listing&id=' . $listing['ListingId'] . '" class="bg-[#1A5C38] text-white px-3 py-1 rounded hover:bg-[#154c2f] transition-all duration-300">Edit</a>
-                                        <form method="POST" action="index.php?page=delete-listing&id=' . $listing['ListingId'] . '" style="display:inline;">
-                                            <input type="hidden" name="listing_id" value="' . $listing['ListingId'] . '">
-                                            <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</button>
+                                        <a href="/ceylonestatefinal/public/viewlisting/load/' . $listing['ListingId'] . '" class="bg-blue-800 text-white px-3 py-1 rounded hover:bg-[#1b3380] transition-all duration-300">View</a>
+                                        <a href="/ceylonestatefinal/public/listing/loadupdatelisting/' . $listing['ListingId'] . '/' . $auth .' " class="bg-[#1A5C38] text-white px-3 py-1 rounded hover:bg-[#154c2f] transition-all duration-300">Edit</a>
+                                        <form method="POST" action="/ceylonestatefinal/public/listing/deletelisting/' . $listing['ListingId'] . '" style="display:inline;">
+                                            <input type="hidden" name="authLevel" value="' . $auth . '">
+                                            <button class="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 transition-all duration-300">Delete</button>
                                         </form>
                                     </div>
                                 </div>';

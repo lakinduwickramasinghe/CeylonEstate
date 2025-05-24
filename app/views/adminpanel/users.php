@@ -3,13 +3,13 @@
     <h2 class="text-3xl font-bold text-[#1A5C38] mb-6">Manage Users</h2>
 
     <div class="flex space-x-4 mb-6">
-        <a href="index.php?page=adminpanel&view=users&table=admin">
+        <a href="/ceylonestatefinal/public/adminpanel/load/users/admin">
             <button class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Admin</button>
         </a>
-        <a href="index.php?page=adminpanel&view=users&table=seller">
+        <a href="/ceylonestatefinal/public/adminpanel/load/users/seller">
             <button class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Seller</button>
         </a>
-        <a href="index.php?page=adminpanel&view=users&table=buyer"> 
+        <a href="/ceylonestatefinal/public/adminpanel/load/users/buyer"> 
             <button class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Buyer</button>
         </a>        
     </div>
@@ -17,7 +17,7 @@
     <div class="flex items-center justify-between mb-6">
         <input type="text" id="searchInput" placeholder="Search users..." class="w-2/3 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
 
-        <a href="index.php?page=adminpanel&view=adduser">
+        <a href="/ceylonestatefinal/public/adminpanel/load/adduser">
             <button class="ml-4 bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">
                 + Add User
             </button>
@@ -38,7 +38,7 @@
             </thead>
             <tbody id="usersTable">
                 <?php 
-                $table = $_GET['table'] ?? 'admin';
+                $table = $tableName ?? 'admin'; // Default to 'admin' if not set
 
                 require_once __DIR__ . '/../../../app/controllers/userController.php'; 
                 $userController = new userController();
@@ -53,8 +53,8 @@
                         echo "<td class='p-3'>{$user['UserRole']}</td>";
                         echo "<td class='p-3'>{$user['CreatedAt']}</td>";
                         echo "<td class='p-3 space-x-2'>
-                                <a href='index.php?page=adminpanel&view=edituser&id={$user['UserId']}' class='text-blue-600 hover:underline'>Edit</a>
-                                <a href='' class='text-red-600 hover:underline'>Delete</a>
+                                <a href='/ceylonestatefinal/public/adminpanel/load/edituser/{$user['UserId']}' class='text-blue-600 hover:underline'>Edit</a>
+                                <a href='/ceylonestatefinal/public/updateprofile/deleteuser/{$user['UserId']}' class='text-red-600 hover:underline'>Delete</a>
                               </td>";
                         echo "</tr>";
                     }

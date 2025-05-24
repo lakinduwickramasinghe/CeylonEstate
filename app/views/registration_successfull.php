@@ -25,10 +25,10 @@
             <p class="text-gray-600 mb-6">Welcome to Ceylon Estate! Your account has been created successfully. You can now log in to start exploring properties or list your own.</p>
 
             <div class="flex justify-center space-x-4">
-                <a href="index.php?page=login">
+                <a href="/ceylonestatefinal/public/login">
                     <button class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Log In Now</button>
                 </a>
-                <a href="index.php?page=home">
+                <a href="/ceylonestatefinal/public">
                     <button class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600 transition-all duration-300">Back to Home</button>
                 </a>
             </div>

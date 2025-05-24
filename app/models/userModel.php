@@ -1,6 +1,6 @@
 <?php 
-
-class User{
+require_once __DIR__ . '/../../config/database.php';
+class UserModel{
     private $firstName;
     private $lastName;
     private $email;
@@ -50,6 +50,14 @@ class User{
         }
     }
 
+    public function isloggedin()
+    {
+        if (empty($_SESSION['user_id']) || empty($_SESSION['user_email'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function getUserProfile($userId)
     {
@@ -101,5 +109,43 @@ class User{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function loginValidation($email, $password)
+    {
+        $stmt = $this->conn->prepare("SELECT * FROM mpuser WHERE Email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (password_verify($password, $user['Password'])) {
+                $_SESSION['user_id'] = $user['UserId'];
+                $_SESSION['user_role'] = $user['UserRole'];
+                $_SESSION['user_email'] = $user['Email'];
+                $_SESSION['last_activity'] = time();
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    public function deleteuser($userId)
+    {
+        try {
+            $stmt = $this->conn->prepare("DELETE FROM mpuser WHERE UserId = :user_id");
+            $stmt->bindParam(':user_id', $userId);
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            if ($e->getCode() === '23000') {
+                return 'foreign_key_constraint';
+            }
+        }
+    }
+
 }
 ?>

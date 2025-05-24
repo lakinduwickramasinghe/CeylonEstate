@@ -1,7 +1,7 @@
 <main class="flex-grow flex items-center justify-center">
     <div class="p-10 rounded-lg border border-gray-300 shadow-md">
         <h2 class="text-2xl font-bold text-center mb-6 text-[#1A5C38]">Add User</h2>
-        <form method="POST" action="index.php?page=signup-controller">
+        <form method="POST" action="/ceylonestatefinal/public/signup/signup">
             <div class="grid grid-cols-2 gap-6 mb-6">
                 <input type="hidden" name="authLevel" value="admin">
                 
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="w-full bg-[#1A5C38] text-white py-2 rounded hover:bg-[#154c2f] shadow-md transition-all duration-300">Sign Up</button>
+            <button type="submit" class="w-full bg-[#1A5C38] text-white py-2 rounded hover:bg-[#154c2f] shadow-md transition-all duration-300">Add User</button>
         </form>
     </div>
 </main>

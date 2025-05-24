@@ -8,7 +8,7 @@
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
     <!-- Header -->
-    <?php require_once __DIR__ . '/../views/includes/header.php'; ?>
+    <?php require __DIR__ . '/../views/includes/header.php'; ?>
 
     <section class="py-16 text-center relative">
         <div class="absolute inset-0 z-0" style="background-image: url('/CeylonEstateFinal/public/images/bg01.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
@@ -26,7 +26,7 @@
                     </div>
                     <div class="relative z-10 p-6 flex flex-col items-center justify-center h-48">
                         <h3 class="text-xl font-bold text-white mb-4">Buy Your Dream Home</h3>
-                        <a href="index.php?page=forsale" class="bg-white text-[#1A5C38] px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300">Explore For Sale</a>
+                        <a href="/ceylonestatefinal/public/forsale" class="bg-white text-[#1A5C38] px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300">Explore For Sale</a>
                     </div>
                 </div>
                 <div class="relative rounded-lg overflow-hidden shadow-lg group">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="relative z-10 p-6 flex flex-col items-center justify-center h-48">
                         <h3 class="text-xl font-bold text-white mb-4">Rent Your Perfect Space</h3>
-                        <a href="index.php?page=forrent" class="bg-white text-[#1A5C38] px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300">Explore For Rent</a>
+                        <a href="/ceylonestatefinal/public/forrent" class="bg-white text-[#1A5C38] px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300">Explore For Rent</a>
                     </div>
                 </div>
             </div>
@@ -51,48 +51,12 @@
                 foreach($forsale as $listing) {
                     $imageData = base64_encode($listing['ImageInfo']);
                     $imageSrc = 'data:image/jpeg;base64,' . $imageData;
-                    $price = number_format($listing['Price'],0);
-                    echo <<<HTML
-                    <a href="index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden h-80 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                            <div class="relative w-full h-40">
-                                <img src="$imageSrc" alt="Property" class="w-full h-full object-cover rounded-t-xl">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-t-xl"></div>
-                                <span class="absolute top-2 left-2 bg-[#1A5C38] text-white text-xs font-semibold px-2 py-1 rounded-full">Featured</span>
-                            </div>
-                            <div class="p-4">
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2 line-clamp-1">{$listing['Title']}</h4>
-                                <p class="text-xl font-bold text-red-600 mb-2">Rs.{$price}</p>
-                                <p class="text-gray-700 text-base line-clamp-1">{$listing['AddressLine01']}</p>
-                                <div class="flex flex-wrap gap-3 mt-3 text-sm text-gray-600">
-                                    <span class="flex items-center">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9h18M3 9l2-2h14l2 2M3 9v8a2 2 0 002 2h14a2 2 0 002-2V9m-6 4h-4v4h4v-4z"></path>
-                                        </svg>
-                                        {$listing['Bedrooms']} Bedroom
-                                    </span>
-                                    <span class="flex items-center">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h-2v2h2V7zm0 4h-2v6h2v-6zm8-6v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2zm-6 0H9v2h6V5z"></path>
-                                        </svg>
-                                        {$listing['Bathrooms']} Bathroom
-                                    </span>
-                                    <span class="flex items-center">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 6l2 2h12l2-2M4 6v12a2 2 0 002 2h12a2 2 0 002-2V6m-8 6h-4m4 0h4"></path>
-                                        </svg>
-                                        {$listing['AreaSize']}m²
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    HTML;
+                    require __DIR__ . '/../views/propertycard.php';
                 }
                 ?>
             </div>
             <div class="mt-8 flex justify-center">
-                <a href="index.php?page=forsale" class="bg-[#1A5C38] text-white px-6 py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold">View All For Sale</a>
+                <a href="/ceylonestatefinal/public/forsale" class="bg-[#1A5C38] text-white px-6 py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold">View All For Sale</a>
             </div>
         </div>
     </section>
@@ -104,51 +68,13 @@
             <h2 class="text-3xl font-bold mb-8 text-center text-[#1A5C38]">Properties For Rent</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <?php 
-                foreach($fortent as $listing) {
-                    $imageData = base64_encode($listing['ImageInfo']);
-                    $imageSrc = 'data:image/jpeg;base64,' . $imageData;
-                    $price = number_format($listing['Price'],0);
-                    echo <<<HTML
-                    <a href="index.php?page=viewlisting&id={$listing['ListingId']}" class="block">
-                        <div class="bg-white rounded-xl shadow-lg overflow-hidden h-80 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                            <div class="relative w-full h-40">
-                                <img src="$imageSrc" alt="Property" class="w-full h-full object-cover rounded-t-xl">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-t-xl"></div>
-                                <span class="absolute top-2 left-2 bg-[#1A5C38] text-white text-xs font-semibold px-2 py-1 rounded-full">Featured</span>
-                            </div>
-                            <div class="p-4">
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2 line-clamp-1">{$listing['Title']}</h4>
-                                <p class="text-xl font-bold text-red-600 mb-2">Rs.{$price} /Month</p>
-                                <p class="text-gray-700 text-base line-clamp-1">{$listing['AddressLine01']}</p>
-                                <div class="flex flex-wrap gap-3 mt-3 text-sm text-gray-600">
-                                    <span class="flex items-center">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9h18M3 9l2-2h14l2 2M3 9v8a2 2 0 002 2h14a2 2 0 002-2V9m-6 4h-4v4h4v-4z"></path>
-                                        </svg>
-                                        {$listing['Bedrooms']} Bedroom
-                                    </span>
-                                    <span class="flex items-center">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h-2v2h2V7zm0 4h-2v6h2v-6zm8-6v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14a2 2 0 012 2zm-6 0H9v2h6V5z"></path>
-                                        </svg>
-                                        {$listing['Bathrooms']} Bathroom
-                                    </span>
-                                    <span class="flex items-center">
-                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 6l2 2h12l2-2M4 6v12a2 2 0 002 2h12a2 2 0 002-2V6m-8 6h-4m4 0h4"></path>
-                                        </svg>
-                                        {$listing['AreaSize']}m²
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    HTML;
+                foreach($forrent as $listing) {
+                    require __DIR__ . '/../views/propertycard.php';
                 }
                 ?>              
             </div>
             <div class="mt-8 flex justify-center">
-                <a href="index.php?page=forrent" class="bg-[#1A5C38] text-white px-6 py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold">View All For Rent</a>
+                <a href="/ceylonestatefinal/public/forrent" class="bg-[#1A5C38] text-white px-6 py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold">View All For Rent</a>
             </div>
         </div>
     </section>
@@ -177,7 +103,7 @@
                 <!-- Contact Form -->
                 <div class="bg-white/80 backdrop-blur-md p-8 rounded-xl shadow-xl w-full max-w-md mx-auto lg:mx-0 animate-fade-in" style="animation-delay: 0.4s;">
                     <h3 class="text-2xl font-bold text-[#1A5C38] mb-6">Got a Question?</h3>
-                    <form action="/submit-contact" method="POST" class="space-y-6">
+                    <form action="" method="POST" class="space-y-6">
                         <div class="relative mb-6">
                             <input type="email" name="email" placeholder="Your email..." required class="w-full p-4 pl-10 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A5C38] placeholder-gray-500 transition-all duration-300">
                             <svg class="w-5 h-5 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

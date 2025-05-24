@@ -12,7 +12,6 @@ class userController
         $database = new Database();
         $this->conn = $database->connection();
     }
-
     public function isLoggedin(){
         if(empty($_SESSION['user_id']) || empty($_SESSION['user_email'])) {
             return true;
@@ -22,42 +21,7 @@ class userController
         }
     }
 
-    public function registerUser()
-    {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-        $firstName = $_POST['firstname'];
-        $lastName = $_POST['lastname'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $phone = $_POST['contactnumber'];
-        $userRole = $_POST['UserRole'] ?? 'user'; 
 
-
-        if (empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($phone)) {
-            echo "All fields are required.";
-            return false;
-        }
-
-        $userModel = new User();
-
-        if ($userModel->checkEmailExists($email)) {
-            echo "Email already exists.";
-            return false;
-        }
-        $userModel->createUser($firstName, $lastName, $email, $password, $phone, $userRole);
-
-        if(isset($_POST['authLevel'])) {
-            header("Location: index.php?page=adminpanel&view=users&table=admin");
-        }
-        else{
-            header("Location: index.php?page=reg-success");
-        }
-
-        
-        
-    }
-}
     public function updateUserProfile()
     {
         $userId = $_SESSION['user_id'];
@@ -70,7 +34,7 @@ class userController
         if (empty($firstName) || empty($lastName) || empty($email) || empty($contactNumber)) {
             return false;
         }
-        $userModel = new User();
+        $userModel = new UserModel();
 
         $status = $userModel->updateUserProfile($userId,$firstName,$lastName,$email,$contactNumber);
         if($status) {
@@ -86,8 +50,7 @@ class userController
             exit();
         } else {
             echo "Failed to update profile.";
-        }
-        
+        }   
     }
     
     public function loadUpdateUserForm()
@@ -98,14 +61,14 @@ class userController
             exit();
         }
         $userId = $_SESSION['user_id'];
-        $userModel = new User();
+        $userModel = new UserModel();
         $user = $userModel->getUserProfile($userId);
         require_once __DIR__ . '/../views/updateprofile.php';
     }
 
     public function returnUsersOnRole($role)
     {
-        $userModel = new User();
+        $userModel = new UserModel();
         $users = $userModel->getGivenTabke($role);
         return $users;
     }

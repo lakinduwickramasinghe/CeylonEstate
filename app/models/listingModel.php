@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../config/database.php';
 
-class Listing{
+class ListingModel{
     private $conn;
 
         public function __construct()
@@ -20,7 +20,7 @@ class Listing{
 
     public function searchforrentlisting($type, $minprice, $maxprice, $keyword) {
         $query = "
-            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price 
+            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price, ListingType 
             FROM propertylisting 
             WHERE ListingType = 'Renting'
         ";
@@ -62,7 +62,7 @@ class Listing{
 
     public function searchforsalelisting($type, $minprice, $maxprice, $keyword) {
         $query = "
-            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price 
+            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price, ListingType 
             FROM propertylisting 
             WHERE ListingType = 'Selling'
         ";
@@ -138,7 +138,7 @@ class Listing{
     public function top6forsale()
     {
         $stmt = $this->conn->prepare("
-            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price 
+            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price, ListingType 
             FROM propertylisting 
             Where ListingType = 'Selling'
             ORDER BY RAND() 
@@ -151,7 +151,7 @@ class Listing{
         public function top6forrent()
     {
         $stmt = $this->conn->prepare("
-            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price 
+            SELECT ListingId, Title, AddressLine01, AddressLine02, City, ImageInfo, Bedrooms, Bathrooms, AreaSize, Price, ListingType
             FROM propertylisting 
             Where ListingType = 'renting'
             ORDER BY RAND() 

@@ -25,11 +25,10 @@ class ReviewModel{
             return false;
         }
     }
-    public function deleteReview($userId, $reviewId)
+    public function deleteReview($reviewId)
     {
-        $query = "DELETE FROM review WHERE UserId = :user_id AND ReviewId = :review_id";
+        $query = "DELETE FROM review WHERE ReviewId = :review_id";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':user_id', $userId);
         $stmt->bindParam(':review_id', $reviewId);
 
         if ($stmt->execute()) {
@@ -38,6 +37,7 @@ class ReviewModel{
             return false;
         }
     }
+    
 
     public function returnAllReviews() {
         $query = "SELECT * FROM review";

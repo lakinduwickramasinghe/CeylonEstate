@@ -1,19 +1,25 @@
 <?php
 
 require_once __DIR__ . '/../models/reviewModel.php';
+require_once __DIR__ . '/../models/userModel.php';
 
 class ReviewController
 {
-
-    public function __construct()
-    {
+    public function load(){
+        $userModel = new UserModel();
+        $result = $userModel->isloggedin();
+        if($result =='false') {
+            header("Location: /ceylonestatefinal/public/login");
+            exit();
+        }
+        require_once __DIR__ . '/../views/addreview.php';
     }
 
-    public function loadReviewPage():void
+    public function loadReviewsAtAboutus()
     {
         $reviewModel = new ReviewModel();
         $reviews = $reviewModel->getReviews();
-        require_once __DIR__ . '/../views/reviewsection.php';
+        return $reviews;
     }
 
         public function getAllReviews()
@@ -31,16 +37,18 @@ class ReviewController
         require_once __DIR__ . '/../views/myreviews.php';
     }
 
-    public function deleteReview($reviewId)
+    public function delete($reviewId=null)
     {
-        $userId = $_SESSION['user_id'];
         $reviewModel = new ReviewModel();
-        $result = $reviewModel->deleteReview($userId, $reviewId);
+        $result = $reviewModel->deleteReview($reviewId);
         if ($result) {
-            header('Location: index.php?page=user-review');
+
+        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'Admin') {
+            header('Location: /ceylonestatefinal/public/adminpanel/load/review');
             exit();
-        } else {
-            echo "Error deleting review.";
+        }
+        header('Location: /ceylonestatefinal/public/updateprofile/myreviews');
+        exit();
         }
     }
 
@@ -52,7 +60,7 @@ class ReviewController
         $reviewModel = new ReviewModel();
         $result = $reviewModel->addReview($userId,$starRating, $description);
         if ($result) {
-            header('Location: index.php?page=aboutus');
+            header('Location: /ceylonestatefinal/public/aboutus');
             exit();
         } else {
             echo "Error adding review.";
