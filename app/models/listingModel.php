@@ -252,11 +252,11 @@ class ListingModel{
         $stmt = $this->conn->prepare("SELECT COUNT(*) as count FROM propertylisting");
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+    } 
 
     public function getAllListings()
     {
-        $stmt = $this->conn->prepare("SELECT * FROM propertylisting");
+        $stmt = $this->conn->prepare("SELECT * FROM propertylisting ORDER BY RAND() LIMIT 6");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

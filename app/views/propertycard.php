@@ -5,7 +5,16 @@
             $imageSrc = 'data:image/jpeg;base64,' . base64_encode($listing['ImageInfo']);
             echo $imageSrc; ?>" alt="Property" class="w-full h-full object-cover rounded-t-xl">
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-t-xl"></div>
-            <span class="absolute top-2 left-2 bg-[#1A5C38] text-white text-xs font-semibold px-2 py-1 rounded-full">Featured</span>
+            <span class="absolute top-2 left-2 bg-[#1A5C38] text-white text-xs font-semibold px-2 py-1 rounded-full">
+            <?php 
+            if($listing['ListingType']=="Selling"){
+                echo "For Sale";
+            }
+            else{
+                echo "For Rent";
+            }
+            ?>
+            </span>
         </div>
         <div class="p-4">
             <h4 class="text-lg font-semibold text-gray-800 mb-2 line-clamp-1"><?php echo $listing['Title'] ?></h4>
