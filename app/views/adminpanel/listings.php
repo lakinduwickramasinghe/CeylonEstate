@@ -1,8 +1,8 @@
 
     <main class="flex-1 p-8">
         <div class="flex justify-between items-center mb-6">
-            <h2 class="text-3xl font-bold text-[#1A5C38]">Manage Listings</h2>
-            <a href="/ceylonestatefinal/public/listing" class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Add New Listing</a>
+            <h2 class="adminpanel-heading">Manage Listings</h2>
+            <a href="/ceylonestatefinal/public/listing" class="green-button">Add New Listing</a>
         </div>
 
         <div class="mb-6">

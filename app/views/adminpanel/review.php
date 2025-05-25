@@ -1,5 +1,5 @@
 <div class="flex-1 bg-white shadow-lg rounded-lg p-6">
-                <h2 class="text-2xl font-bold mb-6 text-left text-[#1A5C38]">Reviews</h2>
+                <h2 class="adminpanel-heading">Reviews</h2>
                 
                 <?php
                 require_once __DIR__ . '/../../../app/controllers/reviewController.php'; 

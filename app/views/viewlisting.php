@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+    define('BASE_URL', '/ceylonestatefinal');
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceylon Estate - View Listing</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="<?php echo BASE_URL . "/public/css/styles.css" ?>" rel="stylesheet">
 </head>
 <body class="flex flex-col min-h-screen bg-green-50">
 
@@ -30,11 +33,8 @@
             <div class="bg-white p-6 rounded-lg shadow-lg">
                 
                 <div class="mb-6">
-                    <button onclick="history.back()" class="flex items-center bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">
-                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                        Go Back
+                    <button onclick="history.back()" class="green-button">
+                        < Go Back
                     </button>
                 </div>
 
@@ -71,7 +71,7 @@
                     <p class="text-gray-700"><?php echo htmlspecialchars($listing['Description']); ?></p>
                 </div>
                 <div class="mt-6 text-center">
-                    <a href="" class="inline-block bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Contact Seller</a>
+                    <a href="" class="green-button">Contact Seller</a>
                 </div>
             </div>
         </div>

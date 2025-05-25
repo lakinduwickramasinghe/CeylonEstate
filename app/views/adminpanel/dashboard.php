@@ -1,5 +1,5 @@
         <main class="flex-1 p-8">
-            <h1 class="text-3xl font-bold text-[#1A5C38] mb-8">Admin Dashboard</h1>
+            <h1 class="adminpanel-heading">Admin Dashboard</h1>
 
             
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">

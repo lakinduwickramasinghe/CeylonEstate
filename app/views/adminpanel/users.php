@@ -1,16 +1,16 @@
 
 <main class="flex-1 p-8">
-    <h2 class="text-3xl font-bold text-[#1A5C38] mb-6">Manage Users</h2>
+    <h2 class="adminpanel-heading">Manage Users</h2>
 
     <div class="flex space-x-4 mb-6">
         <a href="/ceylonestatefinal/public/adminpanel/load/users/admin">
-            <button class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Admin</button>
+            <button class="green-button">Admin</button>
         </a>
         <a href="/ceylonestatefinal/public/adminpanel/load/users/seller">
-            <button class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Seller</button>
+            <button class="green-button">Seller</button>
         </a>
         <a href="/ceylonestatefinal/public/adminpanel/load/users/buyer"> 
-            <button class="bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Buyer</button>
+            <button class="green-button">Buyer</button>
         </a>        
     </div>
 
@@ -18,7 +18,7 @@
         <input type="text" id="searchInput" placeholder="Search users..." class="w-2/3 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1A5C38]">
 
         <a href="/ceylonestatefinal/public/adminpanel/load/adduser">
-            <button class="ml-4 bg-[#1A5C38] text-white px-4 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">
+            <button class="green-button">
                 + Add User
             </button>
         </a>

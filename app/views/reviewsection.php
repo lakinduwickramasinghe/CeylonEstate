@@ -3,7 +3,7 @@
             <div class="flex justify-between items-center mb-8">
                 <h2 class="text-3xl font-bold custom-dark-green">Customer Reviews</h2>
                 <a href="/ceylonestatefinal/public/review">
-                    <button class="bg-[#2E7D32] text-[#ffffff] px-4 py-2 rounded hover:bg-[#1d4f20] hover:text-white text-sm transition-colors duration-300">Add Review</button>
+                    <button class="green-button">Add Review</button>
                 </a>
             </div>
 

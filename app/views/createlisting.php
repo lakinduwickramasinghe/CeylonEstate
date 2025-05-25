@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+    define('BASE_URL', '/ceylonestatefinal');
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceylon Estate - Create New Listing</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="<?php echo BASE_URL . "/public/css/styles.css" ?>" rel="stylesheet">
     <style>
         .bg-image-placeholder {
             background-color: #e5e7eb;
@@ -105,7 +108,7 @@
                     
                     </div>
                     <div class="text-center mt-3">
-                        <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f] transition-all duration-300">Create Listing</button>
+                        <button type="submit" class="green-button">Create Listing</button>
                     </div>
                 </form>
             </div>

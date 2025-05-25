@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+    define('BASE_URL', '/ceylonestatefinal');
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceylon Estate Homepage</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="<?php echo BASE_URL . "/public/css/styles.css" ?>" rel="stylesheet">
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
     <!-- Header -->
@@ -27,7 +30,7 @@
                     </div>
                     <div class="relative z-10 p-4 sm:p-6 flex flex-col items-center justify-center h-40 sm:h-48">
                         <h3 class="text-lg sm:text-xl font-bold text-white mb-4">Buy Your Dream Home</h3>
-                        <a href="/ceylonestatefinal/public/forsale" class="bg-white text-[#1A5C38] px-4 sm:px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300 text-sm sm:text-base">Explore For Sale</a>
+                        <a href="/ceylonestatefinal/public/forsale" class="white-button">Explore For Sale</a>
                     </div>
                 </div>
                 <div class="relative rounded-lg overflow-hidden shadow-lg group">
@@ -36,7 +39,7 @@
                     </div>
                     <div class="relative z-10 p-4 sm:p-6 flex flex-col items-center justify-center h-40 sm:h-48">
                         <h3 class="text-lg sm:text-xl font-bold text-white mb-4">Rent Your Perfect Space</h3>
-                        <a href="/ceylonestatefinal/public/forrent" class="bg-white text-[#1A5C38] px-4 sm:px-6 py-2 rounded-lg font-semibold group-hover:bg-[#F0F2F5] transition-all duration-300 text-sm sm:text-base">Explore For Rent</a>
+                        <a href="/ceylonestatefinal/public/forrent" class="white-button">Explore For Rent</a>
                     </div>
                 </div>
             </div>
@@ -57,7 +60,7 @@
                 ?>
             </div>
             <div class="mt-6 sm:mt-8 flex justify-center">
-                <a href="/ceylonestatefinal/public/forsale" class="bg-[#1A5C38] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold text-sm sm:text-base">View All For Sale</a>
+                <a href="/ceylonestatefinal/public/forsale" class="green-button">View All For Sale</a>
             </div>
         </div>
     </section>
@@ -74,7 +77,7 @@
                 ?>              
             </div>
             <div class="mt-6 sm:mt-8 flex justify-center">
-                <a href="/ceylonestatefinal/public/forrent" class="bg-[#1A5C38] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg hover:bg-[#154c2f] transition-all duration-300 font-semibold text-sm sm:text-base">View All For Rent</a>
+                <a href="/ceylonestatefinal/public/forrent" class="green-button">View All For Rent</a>
             </div>
         </div>
     </section>

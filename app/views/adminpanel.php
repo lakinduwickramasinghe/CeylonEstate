@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+        define('BASE_URL', '/ceylonestatefinal');
+    ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceylon Estate - Admin Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="<?php echo BASE_URL . "/public/css/styles.css" ?>" rel="stylesheet">
+
 </head>
 
 <?php

@@ -6,7 +6,7 @@ $user = $usermodel->getUserProfile($_SESSION['user_id']);
     <main class="flex flex-1 py-8">
         <div class="container mx-auto px-4 flex">
             <div class="flex-1 rounded-lg p-6">
-                <h2 class="text-[#1A5C38] font-bold text-3xl font-bold mb-6 text-left">MY PROFILE</h2>
+                <h2 class="adminpanel-heading">MY PROFILE</h2>
                 <div class="flex items-center mb-6">
                     <div class="w-16 h-16 bg-gray-300 rounded-full flex items-center justify-center mr-4">
                         <svg class="w-10 h-10 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -35,10 +35,10 @@ $user = $usermodel->getUserProfile($_SESSION['user_id']);
                     </div>
                     <div class="text-center">
                         <a href="/ceylonestatefinal/public/adminpanel/load/myprofile">
-                            <button type="button" class="bg-gray-500 text-white px-6 py-2 rounded hover:bg-gray-600">Cancel</button>
+                            <button type="button" class="white-button">Cancel</button>
                         </a>
 
-                            <button type="submit" class="bg-[#1A5C38] text-white px-6 py-2 rounded hover:bg-[#154c2f]">Update Profile</button>
+                            <button type="submit" class="green-button">Update Profile</button>
 
                     </div>
                 </form>
