@@ -10,13 +10,7 @@
     <link href="<?php echo BASE_URL . "/public/css/styles.css" ?>" rel="stylesheet">
 
 </head>
-
-<?php
-    if ($_SESSION['user_role'] != 'Admin') { 
-        header("Location: /ceylonestatefinal/public/home/denyaccess");
-        exit();
-    }
-?>    
+  
 <body class="bg-green-50 min-h-screen flex flex-col">
 
     <!-- Header -->

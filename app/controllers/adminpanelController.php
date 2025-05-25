@@ -6,6 +6,10 @@ require_once __DIR__ . '/../controllers/userController.php';
 class AdminpanelController{
 
     public function load($currentPage = null, $table = null){
+        if ($_SESSION['user_role'] != 'Admin') { 
+        header("Location: /ceylonestatefinal/public/home/denyaccess");
+        exit();
+        }
         $page = $currentPage;
         $tableName = $table;
         $userController = new userController();

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ceylon Estate Homepage</title>
     <link href="<?php echo BASE_URL . "/public/css/styles.css" ?>" rel="stylesheet">
+    
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100">
     <!-- Header -->
